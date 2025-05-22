@@ -4,8 +4,8 @@ from models.classifiers import get_model
 from datasets.custom_dataset import get_dataloaders
 from utils import load_model
 
-def evaluate_model(data_dir, num_classes, model_name='mobilenet_v3_large',
-                   model_path=None, batch_size=32, target_size=(640, 640)):
+def evaluate_model(data_dir, num_classes, model_name='mobilenet_v3_large', 
+                    model_path=None, batch_size=32, target_size=(640, 640)):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     _, _, test_loader = get_dataloaders(data_dir, batch_size, target_size, include_test=True)

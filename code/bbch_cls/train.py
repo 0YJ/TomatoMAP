@@ -6,7 +6,6 @@ import os
 from tqdm import tqdm
 import matplotlib.pyplot as plt
 import pandas as pd
-
 from models.classifiers import get_model
 from datasets.custom_dataset import get_dataloaders
 from utils import save_model
@@ -61,7 +60,7 @@ def evaluate(model, dataloader, criterion, device):
     accuracy = correct / total
     return avg_loss, accuracy
 
-def train_model(data_dir, num_classes, model_name='mobilenet_v3_large',
+def train(data_dir, num_classes, model_name='mobilenet_v3_large',
                 batch_size=32, num_epochs=150, learning_rate=1e-4, target_size=(640, 640),
                 resume_path=None, save_interval=20, patience=10):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -82,7 +81,7 @@ def train_model(data_dir, num_classes, model_name='mobilenet_v3_large',
         with open(log_path, 'w') as f:
             f.write("epoch,train_loss,train_accuracy,val_loss,val_accuracy\n")
 
-    print("\n Starting training...")
+    print("\n Starting training!")
 
     best_val_loss = float('inf')
     early_stop_counter = 0
@@ -158,7 +157,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    train_model(
+    train(
         data_dir=args.data_dir,
         num_classes=args.num_classes,
         model_name=args.model_name,
