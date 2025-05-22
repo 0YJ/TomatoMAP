@@ -13,7 +13,7 @@ rcParams['font.family'] = 'Calibri'
 rcParams['font.size'] = 8
 
 # read labels
-def read_yolo_txt(file_path):
+def read_label(file_path):
     bboxes = []
     with open(file_path, 'r') as f:
         for line in f.readlines():
@@ -37,7 +37,7 @@ def compute_iou(box1, box2):
     return inter_area / union_area if union_area else 0
 
 # greedy iou algorithm
-def greedy_iou_matching(boxes_a, boxes_b, iou_threshold=0.5):
+def greedy_iou(boxes_a, boxes_b, iou_threshold=0.5):
     matched_indices = []
     unmatched_a = set(range(len(boxes_a)))
     unmatched_b = set(range(len(boxes_b)))
@@ -63,7 +63,7 @@ def greedy_iou_matching(boxes_a, boxes_b, iou_threshold=0.5):
     return matched_indices, list(unmatched_a), list(unmatched_b)
 
 # fleiss kappa
-def safe_fleiss_kappa(table):
+def fleiss_kappa(table):
     try:
         unique_rows = np.unique(table, axis=0)
         if unique_rows.shape[0] == 1:
@@ -79,13 +79,13 @@ def safe_fleiss_kappa(table):
         return 0.0
 
 # fleiss table
-def create_fleiss_table(all_boxes, iou_threshold=0.5, num_classes=7):
+def penalized_fleiss_table(all_boxes, iou_threshold=0.5, num_classes=7):
     num_annotators = len(all_boxes)
     all_matched_centers = []
 
     for i in range(num_annotators):
         for j in range(i+1, num_annotators):
-            matches, _, _ = greedy_iou_matching(all_boxes[i], all_boxes[j], iou_threshold)
+            matches, _, _ = greedy_iou(all_boxes[i], all_boxes[j], iou_threshold)
             for idx1, idx2 in matches:
                 box_i = all_boxes[i][idx1]
                 box_j = all_boxes[j][idx2]
@@ -115,13 +115,13 @@ def create_fleiss_table(all_boxes, iou_threshold=0.5, num_classes=7):
         table.append(votes)
     return np.array(table)
 
-def create_fleiss_table_unpenalized(all_boxes, iou_threshold=0.5, num_classes=7):
+def unpenalized_fleiss_table(all_boxes, iou_threshold=0.5, num_classes=7):
     num_annotators = len(all_boxes)
     all_matched_centers = []
 
     for i in range(num_annotators):
         for j in range(i+1, num_annotators):
-            matches, _, _ = greedy_iou_matching(all_boxes[i], all_boxes[j], iou_threshold)
+            matches, _, _ = greedy_iou(all_boxes[i], all_boxes[j], iou_threshold)
             for idx1, idx2 in matches:
                 box_i = all_boxes[i][idx1]
                 box_j = all_boxes[j][idx2]
@@ -156,7 +156,7 @@ def create_fleiss_table_unpenalized(all_boxes, iou_threshold=0.5, num_classes=7)
     return np.array(table)
 
 # plot fleiss kappa
-def plot_fleiss_kappa_comparison(kappa_with_penalty, kappa_without_penalty, out_path):
+def fleiss_vis(kappa_with_penalty, kappa_without_penalty, out_path):
     indices = list(range(len(kappa_with_penalty)))
     plt.figure(figsize=(6.3, 4))
     plt.plot(indices, kappa_with_penalty, 'o-', label="Fleiss' Kappa (penalized)", alpha=0.7)
@@ -168,11 +168,11 @@ def plot_fleiss_kappa_comparison(kappa_with_penalty, kappa_without_penalty, out_
     plt.grid(True, linestyle='--', alpha=0.6)
     plt.legend(fontsize=8)
     plt.tight_layout()
-    plt.savefig(os.path.join(out_path, 'fleiss_kappa_comparison.pdf'), dpi=300)
+    plt.savefig(os.path.join(out_path, 'fleiss_comparison.pdf'), dpi=300)
     plt.close()
 
 # plot heatmap
-def plot_instance_heatmap(all_boxes, img_size, out_path, filename):
+def heatmap_vis(all_boxes, img_size, out_path, filename):
     mask = np.zeros(img_size, dtype=np.float32)
     for annot_boxes in all_boxes:
         for box in annot_boxes:
@@ -200,7 +200,7 @@ def plot_instance_heatmap(all_boxes, img_size, out_path, filename):
     plt.close(fig)
 
 # plot fleiss mean
-def plot_fleiss_scatter_with_mean(fleiss_scores, out_path):
+def fleiss_vis_scatter(fleiss_scores, out_path):
     plt.figure(figsize=(6.3, 4))
     plt.plot(fleiss_scores, 'o-', label="Fleiss' Kappa", alpha=0.7)
     mean_value = np.mean(fleiss_scores)
@@ -212,10 +212,10 @@ def plot_fleiss_scatter_with_mean(fleiss_scores, out_path):
     plt.grid(True, linestyle='--', alpha=0.6)
     plt.legend()
     plt.tight_layout()
-    plt.savefig(os.path.join(out_path, 'fleiss_kappa_scatter_mean.pdf'), dpi=300)
+    plt.savefig(os.path.join(out_path, 'fleiss_AvH.pdf'), dpi=300)
     plt.close()
 
-def plot_optimized_boxplot(data, labels, out_path):
+def cohen_vis(data, labels, out_path):
     
     fixed_labels = []
     for label in labels:
@@ -262,10 +262,10 @@ def plot_optimized_boxplot(data, labels, out_path):
     plt.setp(ax.get_xticklabels(), rotation=45, ha='right')
 
     plt.tight_layout()
-    plt.savefig(os.path.join(out_path, 'cohen_kappa_boxplot.pdf'), dpi=300)
+    plt.savefig(os.path.join(out_path, 'cohen_AvH.pdf'), dpi=300)
     plt.close()
 
-def plot_kappa_matrix(fleiss_scores, pairwise_kappas, filenames, out_path):
+def kappa_matrix(fleiss_scores, pairwise_kappas, filenames, out_path):
 
     pair_keys = list(pairwise_kappas.keys())
     all_labels = pair_keys + ["Fleiss"]
@@ -341,18 +341,18 @@ def main():
     kappas_unpenalized = []
     
     for filename in sorted(filenames):
-        all_boxes = [read_yolo_txt(os.path.join(paths[annot], filename)) for annot in annotators]
+        all_boxes = [read_label(os.path.join(paths[annot], filename)) for annot in annotators]
 
-        fleiss_table = create_fleiss_table(all_boxes, iou_threshold=args.iou)
-        kappas.append(safe_fleiss_kappa(fleiss_table))
+        fleiss_table = penalized_fleiss_table(all_boxes, iou_threshold=args.iou)
+        kappas.append(fleiss_kappa(fleiss_table))
         
-        fleiss_table_unpenalized = create_fleiss_table_unpenalized(all_boxes, iou_threshold=args.iou)
-        kappas_unpenalized.append(safe_fleiss_kappa(fleiss_table_unpenalized))
+        fleiss_table_unpenalized = unpenalized_fleiss_table(all_boxes, iou_threshold=args.iou)
+        kappas_unpenalized.append(fleiss_kappa(fleiss_table_unpenalized))
 
         for (i, j), key in zip(combinations(range(len(annotators)), 2), pairwise_kappas):
             boxes1 = all_boxes[i]
             boxes2 = all_boxes[j]
-            matched_indices, unmatched1, unmatched2 = greedy_iou_matching(boxes1, boxes2, iou_threshold=args.iou)
+            matched_indices, unmatched1, unmatched2 = greedy_iou(boxes1, boxes2, iou_threshold=args.iou)
 
             labels1 = []
             labels2 = []
@@ -383,17 +383,17 @@ def main():
                 pairwise_kappas[key].append(0.0)
 
 
-        plot_instance_heatmap(all_boxes, tuple(args.size), args.out, os.path.splitext(filename)[0])
+        heatmap_vis(all_boxes, tuple(args.size), args.out, os.path.splitext(filename)[0])
 
-    plot_fleiss_scatter_with_mean(kappas, args.out)
-    plot_fleiss_kappa_comparison(kappas, kappas_unpenalized, args.out)
-    plot_optimized_boxplot(
+    fleiss_vis_scatter(kappas, args.out)
+    fleiss_vis(kappas, kappas_unpenalized, args.out)
+    cohen_vis(
         data=[pairwise_kappas[key] for key in pairwise_kappas],
         labels=[key for key in pairwise_kappas],
         out_path=args.out
     )
 
-    plot_kappa_matrix(kappas, pairwise_kappas, sorted(filenames), args.out)
+    kappa_matrix(kappas, pairwise_kappas, sorted(filenames), args.out)
 
     pd.DataFrame(pairwise_kappas, index=sorted(filenames)).assign(Fleiss_Kappa=kappas, Fleiss_Kappa_Unpenalized=kappas_unpenalized).to_excel(
         os.path.join(args.out, 'kappa_results.xlsx'))
