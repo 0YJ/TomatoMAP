@@ -32,9 +32,8 @@ def get_font(size=30, bold=False):
     return ImageFont.load_default()
 
 
-def imshow(img_tensor, save_path=None,
-           gt_label=None, pred_label=None, correct=True, prob=None,
-           mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)):
+def imshow(img_tensor, save_path=None, gt_label=None, pred_label=None, correct=True, prob=None, 
+            mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)):
     img = img_tensor.cpu().clone()
     img = denormalize(img, mean, std)
     img = transforms.ToPILImage()(img)
@@ -67,9 +66,8 @@ def save_confusion_matrix(y_true, y_pred, class_names, save_path_img, save_path_
     df_cm.to_csv(save_path_csv)
 
 
-def evaluate_model(data_dir, num_classes, model_name='mobilenet_v3_large',
-                   model_path=None, batch_size=32, target_size=(640, 640),
-                   show_images=True, save_images=False, save_dir='eval_results'):
+def evaluate_model(data_dir, num_classes, model_name='mobilenet_v3_large', model_path=None, 
+                    batch_size=32, target_size=(640, 640), show_images=True, save_images=False, save_dir='eval_results'):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     _, _, test_loader = get_dataloaders(data_dir, batch_size, target_size, include_test=True)
@@ -117,11 +115,11 @@ def evaluate_model(data_dir, num_classes, model_name='mobilenet_v3_large',
 
                     if save_images:
                         imshow(images[i],
-                               save_path=save_path,
-                               gt_label=true_class,
-                               pred_label=pred_class,
-                               correct=is_correct,
-                               prob=conf)
+                                save_path=save_path,
+                                gt_label=true_class,
+                                pred_label=pred_class,
+                                correct=is_correct,
+                                prob=conf)
 
     acc = correct / total
     print(f"\n Test Accuracy for {model_name}: {acc:.4f}")

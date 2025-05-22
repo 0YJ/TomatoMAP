@@ -189,7 +189,7 @@ def heatmap_vis(all_boxes, img_size, out_path, filename):
     fig, ax = plt.subplots(figsize=(8, 8))
     im = ax.imshow(mask, cmap=cmap, interpolation='nearest')
     ax.tick_params(axis='both', which='both', bottom=True, top=True, left=True, right=True,
-                   labelbottom=False, labelleft=False, direction='in', length=6)
+                    labelbottom=False, labelleft=False, direction='in', length=6)
     for spine in ax.spines.values():
         spine.set_edgecolor('black')
         spine.set_linewidth(1.2)
@@ -237,7 +237,7 @@ def cohen_vis(data, labels, out_path):
     fig, ax = plt.subplots(figsize=(6.3, 4))
 
     box = ax.boxplot(sorted_data, labels=sorted_labels, patch_artist=True, showmeans=True,
-                     meanprops={"marker": "*", "markerfacecolor": "red", "markeredgecolor": "red", "markersize": 3})
+                        meanprops={"marker": "*", "markerfacecolor": "red", "markeredgecolor": "red", "markersize": 3})
 
     for patch, color in zip(box['boxes'], colors):
         patch.set_facecolor(color)

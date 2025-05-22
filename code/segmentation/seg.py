@@ -10,7 +10,6 @@ from torchvision.ops import box_iou
 import torch
 from sklearn.metrics import confusion_matrix
 from pycocotools import mask as mask_utils
-
 from detectron2.engine import DefaultTrainer, DefaultPredictor
 from detectron2.config import get_cfg
 from detectron2 import model_zoo
