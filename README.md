@@ -8,7 +8,7 @@ Offical code repository for the manuscript "Tomato Multi-Angle Multi-Pose Datase
 
 ### TomatoMAP Dataset
 ---------------
-Please download our [repository](https://github.com/0YJ/MPTSTD) for downloading. We suggest reading [README](https://github.com/0YJ/MPTSTD/blob/main/README.md) before using the dataset.
+You may want to firstly download [TomatoMAP](https://ipk-cloud.ipk-gatersleben.de/s/cey233Fsdcs8nti) data. We suggest reading [README](https://github.com/0YJ/MPTSTD/blob/main/README.md) before using the dataset.
 
 Citation
 --------------
