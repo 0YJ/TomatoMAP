@@ -1,12 +1,12 @@
-## Welcome to TomatoMAP Project 
+## TomatoMAP
 
 <p align="center">
   <img src="IMG/index.png" alt="avatar">
 </p>
 
-This is the offical repo for FPMMTD project. 
+Offical code repository for the manuscript "Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotyping"
 
-### FPMMTD Dataset
+### TomatoMAP Dataset
 ---------------
 Please clone our [repository](https://github.com/0YJ/MPTSTD) for downloading. We suggest reading [README](https://github.com/0YJ/MPTSTD/blob/main/README.md) before using the dataset.
 
