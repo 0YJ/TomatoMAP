@@ -16,9 +16,9 @@ You may want to firstly download [TomatoMAP](https://ipk-cloud.ipk-gatersleben.d
 git clone https://github.com/0YJ/EoC.git
 ```
 
--Put downloaded TomatoMAP into this repo
+- Put downloaded TomatoMAP into this repo
 
--Use our notebook and follow the guide, run through the cells. Finally you will get TomatoMAP-Cls, TomatoMAP-Det, TomatoMAP-Seg ready for training.
+- Use our notebook and follow the guide, run through the cells. Finally you will get TomatoMAP-Cls, TomatoMAP-Det, TomatoMAP-Seg ready for training.
 
 Citation
 --------------
