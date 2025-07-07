@@ -1,10 +1,10 @@
 from ultralytics import YOLO
 
-model = YOLO("./best.pt")
+model = YOLO("D:/EOC/yolov12-main/best.pt")
 
 # Run prediction
 results = model.predict(
-    source="D:/paper1/img/",  
+    source="D:/EOC/img/",
     save_txt=True,
     conf=0.6,
     imgsz=640,
@@ -15,6 +15,6 @@ results = model.predict(
     #save_crop=True
 )
 
-#for r in results:
-#    print(f"Image: {r.path}")
-#    print(f"Detections: {r.boxes.shape}")  # shape: (num_boxes, 6) -> x1, y1, x2, y2, conf, cls
+for r in results:
+    print(f"Image: {r.path}")
+    print(f"Detections: {r.boxes.shape}")
