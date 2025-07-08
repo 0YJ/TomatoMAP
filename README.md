@@ -14,11 +14,13 @@ You may want to firstly download [TomatoMAP](https://ipk-cloud.ipk-gatersleben.d
 - Clone our repo
 ```bash
 git clone https://github.com/0YJ/EoC.git
+cd EoC/code
 ```
 
-- Put downloaded TomatoMAP into this repo
+- Put downloaded TomatoMAP into code folder
 
-- Use our notebook and follow the guide, run through the cells. Finally you will get TomatoMAP-Cls, TomatoMAP-Det, TomatoMAP-Seg ready for training.
+- Follow the TomatoMAP_builder notebook. Finally you will get TomatoMAP-Cls, TomatoMAP-Det, TomatoMAP-Seg ready for training.
+- If you want to train by yourself, you can follow the guide of TomatoMAP_trainer.  
 
 Citation
 --------------
