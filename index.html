@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TomatoMAP: Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotyping</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-red: #dc2626;
+            --dark-red: #b91c1c;
+            --black: #000000;
+            --dark-gray: #1f2937;
+            --light-gray: #f8fafc;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23dc2626" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23dc2626" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="%23dc2626" opacity="0.1"/><circle cx="10" cy="90" r="1" fill="%23dc2626" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--primary-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .authors {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        .author-link {
+            color: var(--primary-red);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .author-link:hover {
+            color: var(--white);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--primary-red);
+            color: var(--white);
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-red);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(220, 38, 38, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--black);
+            border: 2px solid var(--primary-red);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-red);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: translateY(-2px);
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section:nth-child(even) {
+            background: var(--light-gray);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--black);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-red);
+            border-radius: 2px;
+        }
+
+        /* Abstract */
+        .abstract {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--primary-red);
+        }
+
+        /* Video/Image Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .gallery-item-content {
+            padding: 20px;
+        }
+
+        .gallery-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--black);
+        }
+
+        .gallery-item p {
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Citation */
+        .citation {
+            background: var(--black);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .citation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-red), var(--dark-red));
+        }
+
+        .citation-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-red);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-red);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .abstract {
+                padding: 30px 20px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section > * {
+            animation-delay: 0.2s;
+        }
+
+        .section > *:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .section > *:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+
+<body>
+<!-- Header -->
+<header class="header">
+    <div class="container">
+        <div class="header-content">
+            <h1 class="title">TomatoMAP: <i>Solanum lycopersicum</i> (Tomato) Multi-Angle Multi-Pose Dataset </h1>
+            <p class="subtitle">A Novel Dataset for Fine-Grained Phenotyping </p>
+            <div class="authors">
+                <a href="#" class="author-link">Yujie Zhang</a><sup>1,2</sup>,
+                <a href="#" class="author-link">Sabine Struckmeyer</a><sup>1</sup>,
+                <a href="#" class="author-link">Andreas Kolb</a><sup>2</sup>,
+                <a href="#" class="author-link">Sven Reichardt</a><sup>1</sup>
+            </div>
+            <div class="authors">
+                <sup>1</sup>Institute for Breeding Research on Horticultural Crops, Julius Kuehn-Institute, Erwin-Baur-Street 27, Quedlinburg, 06484, Saxony-Anhalt, Germany, <sup>2</sup>Computer Graphics Group, Center for Sensor Systems
+                (ZESS), University of Siegen, 57076 Siegen, Germany
+            </div>
+
+            <div class="action-buttons">
+                <a href="#" class="btn btn-primary">
+                    <i class="fas fa-file-pdf"></i>
+                    Paper
+                </a>
+                <a href="https://ipk-cloud.ipk-gatersleben.de/s/cey233Fsdcs8nti" class="btn btn-secondary">
+                    <i class="fas fa-database"></i>
+                    Dataset
+                </a>
+                <a href="https://github.com/0YJ/EoC" class="btn btn-outline">
+                    <i class="fab fa-github"></i>
+                    Code
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Abstract -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title fade-in">Abstract</h2>
+        <div class="abstract fade-in">
+            <p>
+                Observer bias and inconsistencies in traditional plant phenotyping methods limit the accuracy and re-
+                producibility of fine-grained plant analysis. To overcome these challenges, we developed TomatoMAP, a
+                comprehensive dataset for <i>Solanum lycopersicum</i> using an Internet of Things (IoT) based imaging system with
+                standardized data acquisition protocols. Our dataset contains 64,464 RGB images that capture 12 different plant
+                poses from four camera elevation angles. Each image includes manually annotated bounding boxes for seven
+                regions of interest (ROIs), including leaves, panicle, batch of flowers, batch of fruits, axillary shoot, shoot and
+                whole plant area, along with 50 fine-grained growth stage classifications based on the BBCH scale. Additionally,
+                we provide 3,616 high-resolution image subset with pixel-wise semantic and instance segmentation annotations
+                for fine-grained phenotyping. We validated our dataset using a cascading model deep learning framework
+                combining MobileNetv3 for classification, YOLOv11 for object detection, and MaskRCNN for segmentation.
+                Through AI vs. Human analysis involving five domain experts, we demonstrate that the models trained on
+                our dataset achieve accuracy and speed comparable to the experts. Cohen’s Kappa and inter-rater agreement
+                heatmap confirm the reliability of automated fine-grained phenotyping using our approach.
+            </p>
+            <br>
+            <p>
+                <b>Keywords</b>: phenotyping, fine-grained, <i>Solanum lycopersicum</i>, Internet of Things, cascading model, AI vs. Human
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Show Case -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title fade-in">Showcase</h2>
+        <div class="gallery fade-in">
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x200/dc2626/ffffff?text=Result+1" alt="Result 1">
+                <div class="gallery-item-content">
+                    <h3>figure 1</h3>
+                    <p>X</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x200/1f2937/ffffff?text=Result+2" alt="Result 2">
+                <div class="gallery-item-content">
+                    <h3>AI vs Human</h3>
+                    <p>Inter-rater agreement</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/400x200/dc2626/ffffff?text=Result+3" alt="Result 3">
+                <div class="gallery-item-content">
+                    <h3>Validation</h3>
+                    <p>Model based validation</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Method -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title fade-in">Method</h2>
+        <div class="abstract fade-in">
+            <p>
+                xxx
+            </p>
+            <br>
+            <p>
+                xxx
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Citation -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title fade-in">Citation</h2>
+        <div class="citation fade-in">
+            <div class="citation-title">BibTeX</div>
+            <pre>@article{yourname2024yourmethod,
+  title={Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotyping},
+  author={Yujie Zhang, Sabine Struckmeyer, Andreas Kolb, and Sven Reichardt},
+  journal={Nature Scientific Data},
+  year={205},
+  volume={XX},
+  pages={XXX--XXX}
+}</pre>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <p>This website template is inspired by modern academic presentation standards.</p>
+            <p>© 2025 Julius Kuehn Institute. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Add smooth scrolling animation
+    document.addEventListener('DOMContentLoaded', function() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section > *').forEach(el => {
+            observer.observe(el);
+        });
+    });
+
+    // Add button click effects
+    document.querySelectorAll('.btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Create ripple effect
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                `;
+
+            this.appendChild(ripple);
+
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+
+    // Add CSS for ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+    document.head.appendChild(style);
+</script>
+</body>
+</html>
