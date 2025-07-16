@@ -25,7 +25,15 @@ cd EoC/code
 Citation
 --------------
 
-Please cite the [FPMMTD paper](https://www.ph.com/placeholder.pdf) if it helps your research:
+Please cite the [TomatoMAP paper](https://arxiv.org/abs/2507.11279) if it helps your research:
 ```bibtex
-
+@misc{zhang2025tomatomultianglemultiposedataset,
+      title={Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotyping}, 
+      author={Yujie Zhang and Sabine Struckmeyer and Andreas Kolb and Sven Reichardt},
+      year={2025},
+      eprint={2507.11279},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2507.11279}, 
+}
 ```
