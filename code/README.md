@@ -54,7 +54,7 @@ TomatoMAP/
 ├── utils/                 # Utility functions
 │   ├── common.py          # Common utilities
 │   ├── visualization.py   # Visualization tools
-│   └── converters.py      # Format converters
+│   └── isat2coco.py       # Format converter for Seg
 │
 └── outputs/               # Training outputs (created automatically)
     ├── cls/              # Classification results
