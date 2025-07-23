@@ -1,4 +1,4 @@
-# 🍅 Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotypin
+# 🍅 Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotyping
 
 <p align="center">
 <a href="https://scholar.google.com/">Yujie Zhang</a>,
