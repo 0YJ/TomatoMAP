@@ -1,4 +1,4 @@
-# 🍅 TomatoMAP: Multi-Task Annotated Dataset for Precision Phenotyping in Tomato Greenhouses
+# 🍅 Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotypin
 
 <p align="center">
 <a href="https://scholar.google.com/">Yujie Zhang</a>,
