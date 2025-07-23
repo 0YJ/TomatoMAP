@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# tomato_map
+
 =======
 ## TomatoMAP
 
@@ -40,4 +39,3 @@ Please cite the [TomatoMAP paper](https://arxiv.org/abs/2507.11279) if it helps 
       url={https://arxiv.org/abs/2507.11279}, 
 }
 ```
->>>>>>> ddf53581d6dd54544eba12271070f31b9519de2e
