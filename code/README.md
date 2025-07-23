@@ -15,9 +15,12 @@ Download [TomatoMAP](https://doi.ipk-gatersleben.de/DOI/89386758-8bfd-41ca-aa9c-
 ### Requirements
 
 ```bash
-# Basic requirements
+# clone repo
 git clone https://github.com/0YJ/TomatoMAP.git && cd TomatoMAP
+
+# install [PyTorch](https://pytorch.org/get-started/locally/)
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
 pip install numpy pandas matplotlib tqdm pillow scikit-learn
 
 # Task-specific requirements
@@ -38,7 +41,7 @@ python isat2coco.py
 
 ```
 TomatoMAP/
-├── main.py                # Main entry point
+├── main.py                # Main entry
 ├── README.md              # Introduction
 ├── requirements.txt       # Dependencies
 │
