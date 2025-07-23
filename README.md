@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-<a href="https://0yj.github.io/tomato_map/">🌐[Homepage]</a>
+<a href="https://0yj.github.io/tomato_map/">📟[Homepage]</a>
 <a href="https://arxiv.org/abs/2507.11279">📄[Paper]</a>
 <a href="https://github.com/0YJ/TomatoMAP">💻[Code]</a>
 <a href="https://doi.ipk-gatersleben.de/DOI/89386758-8bfd-41ca-aa9c-ee363e9d94c9/073051f0-b05e-4b43-a9cd-0435fe7cd913/2/1847940088">📁[Dataset]</a>
