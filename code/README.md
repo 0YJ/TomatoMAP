@@ -16,6 +16,7 @@ Download [TomatoMAP](https://doi.ipk-gatersleben.de/DOI/89386758-8bfd-41ca-aa9c-
 
 ```bash
 # Basic requirements
+git clone https://github.com/0YJ/TomatoMAP.git && cd TomatoMAP
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 pip install numpy pandas matplotlib tqdm pillow scikit-learn
 
