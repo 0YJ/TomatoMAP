@@ -1,4 +1,5 @@
-# 🍅 TomatoMAP: Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotyping - ***A Novel Dataset for Tomato Fine-Grained Phenotyping*** 
+# 🍅 TomatoMAP: Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotyping 
+***A Novel Dataset for Tomato Fine-Grained Phenotyping*** 
 
 <p align="center">
 <a href="https://orcid.org/0009-0004-8160-809X">Yujie Zhang</a>,
