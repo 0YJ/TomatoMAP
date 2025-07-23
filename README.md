@@ -26,7 +26,7 @@
 ## 🌠 Coming Soon
 * Code validation check
 * TomatoMAP builder on colab
-* Demo
+* Web UI demo for easy using
 * Claim e!DAL DOI
 * Submission to Nature Scientific Data DOI
 * Update homepage
