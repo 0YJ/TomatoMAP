@@ -35,6 +35,8 @@ pip install opencv-python
 
 # For ISAT2COCO conversion:
 pip install pyyaml
+
+# Translate ISAT format to COCO
 cd utils
 python isat2coco.py
 ```
