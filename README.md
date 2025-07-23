@@ -38,6 +38,11 @@ Please check [code](https://github.com/0YJ/TomatoMAP/tree/main/code) subfolder f
   <summary>Expand details</summary>
 
 ### Requirements
+We suggest using [conda](https://www.anaconda.com/) for env management. 
+```
+conda create -n tomatomap python=3.10
+conda activate tomatomap
+```
 
 ```bash
 # clone repo
