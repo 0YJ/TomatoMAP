@@ -20,7 +20,8 @@
 
 * 15.07.2025: Paper available on [arXiv](https://arxiv.org/abs/2507.11279)
 * 18.07.2025 Full dataset release on e!DAL
-* Coming soon: Nature Scientific Data
+* Coming soon: Code validation check
+* Coming soon: Submit to Nature Scientific Data
 
 ## Getting Started
 Please check code subfolder for more details.
