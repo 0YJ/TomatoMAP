@@ -17,6 +17,7 @@ Download [TomatoMAP](https://doi.ipk-gatersleben.de/DOI/89386758-8bfd-41ca-aa9c-
 ```bash
 # clone repo
 git clone https://github.com/0YJ/TomatoMAP.git && cd TomatoMAP
+cp det/best_hyperparameters.yaml ./
 
 # install [PyTorch](https://pytorch.org/get-started/locally/)
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
@@ -46,6 +47,14 @@ TomatoMAP/
 ├── requirements.txt       # Dependencies
 │
 ├── avh/                   # AI vs Human Analysis
+│
+├── seg/                   # Segmentation package
+│
+├── cls/                   # Classifier
+│
+├── det/                   # Detection package
+│   ├── TomatoMAP-Det.yaml     # YOLo training settings
+│   └── best_hyperparameters.yaml     # Fine-tuned hyperparameters
 │
 ├── trainers/              # Training modules
 │   ├── cls_trainer.py     # Classification trainer
@@ -78,10 +87,10 @@ TomatoMAP/
 Train a classification model on TomatoMAP-Cls dataset:
 
 ```bash
-# Basic training with MobileNetV3-Large
+# Default training with MobileNetV3-Large
 python main.py cls --data-dir ./TomatoMAP/TomatoMAP-Cls --epochs 100
 
-# Advanced options
+# Options
 python main.py cls \
     --data-dir ./TomatoMAP/TomatoMAP-Cls \
     --model mobilenet_v3_large \
@@ -104,10 +113,10 @@ Available models:
 Train a YOLO model on TomatoMAP-Det dataset:
 
 ```bash
-# Basic training with YOLO11-Large
+# Default training with YOLO11-Large
 python main.py det --data-config ./det/TomatoMAP-Det.yaml --epochs 500
 
-# Advanced options
+# Options
 python main.py det \
     --data-config ./det/TomatoMAP-Det.yaml \
     --model yolo11l.pt \
@@ -122,7 +131,7 @@ python main.py det \
 
 ### Segmentation Training
 
-Train a Mask R-CNN model on TomatoMAP-Seg dataset:
+Train a Mask R-CNN FPN based model on TomatoMAP-Seg dataset:
 
 ```bash
 # Training
@@ -150,7 +159,7 @@ python main.py seg vis \
 # Dataset information
 python main.py seg info --data-dir ./TomatoMAP/TomatoMAP-Seg
 
-# Analyze object areas
+# Analyze object size (small, big, middle)
 python main.py seg analyze --data-dir ./TomatoMAP/TomatoMAP-Seg
 ```
 
@@ -166,10 +175,10 @@ Available models:
 ```
 TomatoMAP-Cls/
 ├── train/
-│   ├── class1/
+│   ├── BBCH class1/
 │   │   ├── img1.jpg
 │   │   └── ...
-│   └── class2/
+│   └── BBCH class2/
 │       └── ...
 ├── val/
 │   └── ...
@@ -180,10 +189,8 @@ TomatoMAP-Cls/
 ### Detection Dataset Structure
 ```
 TomatoMAP-Det/
-├── TomatoMAP-Det.yaml    # YOLO data configuration
 ├── images
-├── labels
-└── best_hyperparameters.yaml  # optimized hyperparameters
+└── labels
 ```
 
 ### Segmentation Dataset Structure
@@ -193,6 +200,6 @@ TomatoMAP-Seg/
 │   ├── img1.JPG
 │   └── ...
 ├── labels/               # All labels in COCO format
-    ├── isat.yaml
+    ├── isat.yaml         # Label and class configuration
     └── img1.json
 ```
