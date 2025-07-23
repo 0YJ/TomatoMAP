@@ -21,6 +21,7 @@ pip install -r requirements.txt
 The input label files should follow yolo format, with:
 **class_id, x_center, y_center, width, height**
 
+```bash
 data/
 ├── Annotator1/
 │   ├── image1.txt
@@ -29,6 +30,7 @@ data/
 │   ├── image1.txt
 │   └── image2.txt
 ...
+```
 
 ## Usage
 ```bash
