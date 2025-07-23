@@ -35,13 +35,13 @@
 ## Getting Started
 Please check [code](https://github.com/0YJ/TomatoMAP/tree/main/code) subfolder for more details. Or click: 
 <details>
-  <summary>More details</summary>
+  <summary>Expand details</summary>
 
 ### Requirements
 
 ```bash
 # clone repo
-git clone https://github.com/0YJ/TomatoMAP.git && cd TomatoMAP
+git clone https://github.com/0YJ/TomatoMAP.git && cd TomatoMAP/code
 cp det/best_hyperparameters.yaml ./
 
 # install [PyTorch](https://pytorch.org/get-started/locally/)
