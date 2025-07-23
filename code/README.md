@@ -17,7 +17,7 @@ Download [TomatoMAP](https://doi.ipk-gatersleben.de/DOI/89386758-8bfd-41ca-aa9c-
 
 ```bash
 # clone repo
-git clone https://github.com/0YJ/TomatoMAP.git && cd TomatoMAP
+git clone https://github.com/0YJ/TomatoMAP.git && cd TomatoMAP/code
 cp det/best_hyperparameters.yaml ./
 
 # install [PyTorch](https://pytorch.org/get-started/locally/)
