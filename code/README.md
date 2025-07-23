@@ -39,6 +39,8 @@ TomatoMAP/
 ├── README.md              # Introduction
 ├── requirements.txt       # Dependencies
 │
+├── avh/                   # AI vs Human Analysis
+│
 ├── trainers/              # Training modules
 │   ├── cls_trainer.py     # Classification trainer
 │   ├── det_trainer.py     # Detection trainer
