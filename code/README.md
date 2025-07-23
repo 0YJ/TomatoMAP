@@ -1,4 +1,4 @@
-# TomatoMAP Preprocess and Training Space
+# TomatoMAP Preprocessing and Training Space
 
 We offer a preprocessing pipeline and support training sample models for classification, detection, and segmentation tasks.
 
