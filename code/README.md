@@ -29,6 +29,8 @@ pip install opencv-python
 
 # For ISAT2COCO conversion:
 pip install pyyaml
+cd utils
+python isat2coco.py
 ```
 
 ### Project Structure
@@ -189,3 +191,4 @@ TomatoMAP-Seg/
 ├── labels/               # All labels in COCO format
     ├── isat.yaml
     └── img1.json
+```
