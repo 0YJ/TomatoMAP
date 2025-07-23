@@ -1,6 +1,6 @@
-# TomatoMAP Training System
+# TomatoMAP Preprocess and Training Space
 
-A unified training system for TomatoMAP dataset supporting classification, detection, and segmentation tasks.
+We offer a preprocessing pipeline and support training sample models for classification, detection, and segmentation tasks.
 
 ## Overview
 
@@ -9,7 +9,8 @@ TomatoMAP is a comprehensive dataset for tomato plant analysis, containing:
 - **TomatoMAP-Det**: Object detection dataset for tomato detection
 - **TomatoMAP-Seg**: Instance segmentation dataset with 10 categories
 
-## Installation
+## Getting start
+Download [TomatoMAP](https://doi.ipk-gatersleben.de/DOI/89386758-8bfd-41ca-aa9c-ee363e9d94c9/073051f0-b05e-4b43-a9cd-0435fe7cd913/2/1847940088), unzip it under code/ folder, and run through **TomatoMAP_builder.ipynb** to preprocess the dataset to TomatoMAP-Cls, TomatoMAP-Det. TomatoMAP-Seg is included directly by download. 
 
 ### Requirements
 
@@ -26,7 +27,7 @@ pip install ultralytics
 pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu118/torch2.0/index.html
 pip install opencv-python
 
-# For ISAT to COCO conversion:
+# For ISAT2COCO conversion:
 pip install pyyaml
 ```
 
@@ -34,8 +35,8 @@ pip install pyyaml
 
 ```
 TomatoMAP/
-├── main.py                 # Main entry point
-├── README.md              # This file
+├── main.py                # Main entry point
+├── README.md              # Introduction
 ├── requirements.txt       # Dependencies
 │
 ├── trainers/              # Training modules
@@ -56,7 +57,7 @@ TomatoMAP/
 │   ├── visualization.py   # Visualization tools
 │   └── isat2coco.py       # Format converter for Seg
 │
-└── outputs/               # Training outputs (created automatically)
+└── outputs/              # Training outputs (created automatically)
     ├── cls/              # Classification results
     ├── det/              # Detection results
     └── seg/              # Segmentation results
