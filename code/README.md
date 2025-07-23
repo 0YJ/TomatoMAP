@@ -171,15 +171,19 @@ TomatoMAP-Cls/
 
 ### Detection Dataset Structure
 ```
-det/
+TomatoMAP-Det/
 ├── TomatoMAP-Det.yaml    # YOLO data configuration
-└── best_hyperparameters.yaml  # Optional hyperparameters
+├── images
+├── labels
+└── best_hyperparameters.yaml  # optimized hyperparameters
 ```
 
 ### Segmentation Dataset Structure
 ```
 TomatoMAP-Seg/
 ├── images/               # All images
-│   ├── img1.jpg
+│   ├── img1.JPG
 │   └── ...
-└── cocoOut/             # COCO format annotations
+├── labels/               # All labels in COCO format
+    ├── isat.yaml
+    └── img1.json
