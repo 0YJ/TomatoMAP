@@ -30,7 +30,7 @@ pip install numpy pandas matplotlib tqdm pillow scikit-learn
 pip install ultralytics
 
 # For segmentation:
-pip install detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu118/torch2.0/index.html
+python -m pip install 'git+https://github.com/facebookresearch/detectron2.git'
 pip install opencv-python
 
 # For ISAT2COCO conversion:
