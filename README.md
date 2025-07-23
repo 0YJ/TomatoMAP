@@ -1,14 +1,14 @@
 # 🍅 TomatoMAP: Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotyping
 
 <p align="center">
-<a href="https://scholar.google.com/">Yujie Zhang</a>,
-<a href="https://scholar.google.com/">Sabine Struckmeyer</a>,
-<a href="https://scholar.google.com/">Andreas Kolb</a>,
-<a href="https://scholar.google.com/">Sven Reichardt</a>
+<a href="https://orcid.org/0009-0004-8160-809X">Yujie Zhang</a>,
+<a href="">Sabine Struckmeyer</a>,
+<a href="https://orcid.org/0000-0003-4753-7801">Andreas Kolb</a>,
+<a href="https://orcid.org/0000-0001-9779-9610">Sven Reichardt</a>
 </p>
 
 <p align="center">
-<a href="https://0yj.github.io/tomato_map/">🌐[Project Page]</a>
+<a href="https://0yj.github.io/tomato_map/">🌐[Homepage]</a>
 <a href="https://arxiv.org/abs/2507.11279">📄[Paper]</a>
 <a href="https://github.com/0YJ/TomatoMAP">💻[Code]</a>
 <a href="https://doi.ipk-gatersleben.de/DOI/89386758-8bfd-41ca-aa9c-ee363e9d94c9/073051f0-b05e-4b43-a9cd-0435fe7cd913/2/1847940088">📁[Dataset]</a>
