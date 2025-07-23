@@ -33,9 +33,9 @@
 * Update homepage
 
 ## Getting Started
-Please check [code](https://github.com/0YJ/TomatoMAP/tree/main/code) subfolder for more details. Or 
+Please check [code](https://github.com/0YJ/TomatoMAP/tree/main/code) subfolder for more details. Or click: 
 <details>
-  <summary>Expand for details</summary>
+  <summary>More details</summary>
 
 ### Requirements
 
