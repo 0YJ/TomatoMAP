@@ -14,6 +14,11 @@ TomatoMAP is a comprehensive dataset for tomato plant analysis, containing:
 Download [TomatoMAP](https://doi.ipk-gatersleben.de/DOI/89386758-8bfd-41ca-aa9c-ee363e9d94c9/073051f0-b05e-4b43-a9cd-0435fe7cd913/2/1847940088), unzip it under code/ folder, and run through **TomatoMAP_builder.ipynb** to preprocess the dataset to TomatoMAP-Cls, TomatoMAP-Det. TomatoMAP-Seg is included directly by download. 
 
 ### Requirements
+We suggest using [conda](https://www.anaconda.com/) for env management. 
+```
+conda create -n tomatomap python=3.10
+conda activate tomatomap
+```
 
 ```bash
 # clone repo
