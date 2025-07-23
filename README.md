@@ -27,8 +27,8 @@
 * TomatoMAP builder on colab
 * Demo
 * Claim e!DAL DOI
-* Coming soon: Submission to Nature Scientific Data DOI
-* Coming soon: Update homepage
+* Submission to Nature Scientific Data DOI
+* Update homepage
 
 ## Getting Started
 Please check code subfolder for more details.
