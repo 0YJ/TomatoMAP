@@ -21,14 +21,15 @@
 
 * 15.07.2025: Paper available on [arXiv](https://arxiv.org/abs/2507.11279)
 * 18.07.2025 Full dataset release on [e!DAL](https://doi.ipk-gatersleben.de/DOI/89386758-8bfd-41ca-aa9c-ee363e9d94c9/073051f0-b05e-4b43-a9cd-0435fe7cd913/2/1847940088)
+* 23。07.2025 Code repo public
 
 
 ## 🌠 Coming Soon
-* Code validation check
+* Code validation
 * TomatoMAP builder on colab
-* Web UI demo for easy using
+* User friendly Web UI demo
 * Claim e!DAL DOI
-* Submission to Nature Scientific Data DOI
+* Submitt to Nature Scientific Data
 * Update homepage
 
 ## Getting Started
