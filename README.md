@@ -32,7 +32,7 @@
 * Update homepage
 
 ## Getting Started
-Please check code subfolder for more details.
+Please check [code](https://github.com/0YJ/TomatoMAP/tree/main/code) subfolder for more details.
 
 ## Citation
 
