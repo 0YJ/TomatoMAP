@@ -1,23 +1,14 @@
-#!/usr/bin/env python3
-"""
-ISAT to COCO format converter for segmentation annotations
-Converts ISAT annotation format to COCO format for Detectron2 training
-"""
-
 import os
 import json
 import yaml
 import random
-import argparse
 from tqdm import tqdm
 from collections import defaultdict
 
 def flatten_segmentation(points):
-    """convert [[x,y],[x,y]] → [x1,y1,x2,y2,...]"""
     return [coord for pair in points for coord in pair]
 
 def load_categories(yaml_path):
-    """load categories from ISAT yaml file"""
     with open(yaml_path, 'r') as f:
         data = yaml.safe_load(f)
     categories = []
@@ -36,14 +27,11 @@ def load_categories(yaml_path):
         cat_id += 1
     return categories, cat_map
 
-def convert_isat_folder_to_coco(task_dir, label_dir, yaml_path, output_dir, 
-                               train_ratio=0.7, val_ratio=0.2):
-    """convert ISAT annotations to COCO format"""
+def convert_isat_folder_to_coco(task_dir, label_dir, yaml_path, output_dir, train_ratio=0.7, val_ratio=0.2):
     os.makedirs(output_dir, exist_ok=True)
 
     categories, category_map = load_categories(yaml_path)
 
-    # match images with annotations
     images = [f for f in os.listdir(task_dir) if f.lower().endswith(('.jpg', '.jpeg', '.png'))]
     json_map = {os.path.splitext(f)[0]: f for f in os.listdir(label_dir) if f.endswith(".json")}
 
@@ -56,7 +44,6 @@ def convert_isat_folder_to_coco(task_dir, label_dir, yaml_path, output_dir,
                 "json_file": json_map[base]
             })
 
-    # shuffle and split dataset
     random.shuffle(dataset)
     total = len(dataset)
     train_end = int(total * train_ratio)
@@ -68,7 +55,6 @@ def convert_isat_folder_to_coco(task_dir, label_dir, yaml_path, output_dir,
         "test": dataset[val_end:]
     }
 
-    # convert each split
     for split_name, split_data in splits.items():
         coco = {
             "images": [],
@@ -78,7 +64,7 @@ def convert_isat_folder_to_coco(task_dir, label_dir, yaml_path, output_dir,
         ann_id = 1
         img_id = 1
 
-        for item in tqdm(split_data, desc=f"converting {split_name}"):
+        for item in split_data:
             img_path = os.path.join(task_dir, item["img_file"])
             json_path = os.path.join(label_dir, item["json_file"])
 
@@ -93,16 +79,13 @@ def convert_isat_folder_to_coco(task_dir, label_dir, yaml_path, output_dir,
                 "height": info["height"]
             })
 
-            # process annotations
             for obj in isat['objects']:
                 cat = obj['category']
                 if cat not in category_map:
                     continue
-                
-                # fix segmentation point format
                 seg_flat = flatten_segmentation(obj["segmentation"])
                 if len(seg_flat) < 6:
-                    continue  # skip invalid polygons (less than 3 points)
+                    continue
 
                 coco["annotations"].append({
                     "id": ann_id,
@@ -117,6 +100,14 @@ def convert_isat_folder_to_coco(task_dir, label_dir, yaml_path, output_dir,
                 ann_id += 1
             img_id += 1
 
-        # save COCO format file
-        output_file = os.path.join(output_dir, f"{split_name}.json")
-        with open(output_file, "w
+        with open(os.path.join(output_dir, f"{split_name}.json"), "w") as f:
+            json.dump(coco, f, indent=2)
+
+        print(f"built {split_name}.json，images: {len(split_data)}")
+
+convert_isat_folder_to_coco(
+    task_dir="../TomatoMAP/TomatoMAP-Seg/images",
+    label_dir="../TomatoMAP/TomatoMAP-Seg/labels",
+    yaml_path="../TomatoMAP/TomatoMAP-Seg/labels/isat.yaml",
+    output_dir="../TomatoMAP/TomatoMAP-Seg/cocoOut"
+)
