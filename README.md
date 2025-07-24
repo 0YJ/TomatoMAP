@@ -48,7 +48,7 @@ We use notebook as TomatoMAP builder (script version coming soon).
 pip install notebook
 jupyter notebook
 ```
-
+Clone repo.
 ```bash
 # clone repo
 git clone https://github.com/0YJ/TomatoMAP.git && cd TomatoMAP/code
