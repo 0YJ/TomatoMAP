@@ -49,6 +49,8 @@ conda activate tomatomap
 git clone https://github.com/0YJ/TomatoMAP.git && cd TomatoMAP/code
 cp det/best_hyperparameters.yaml ./
 
+# unzip TomatoMAP dataset here
+
 # install [PyTorch](https://pytorch.org/get-started/locally/)
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
