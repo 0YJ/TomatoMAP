@@ -1,0 +1,5 @@
+A P1
+B P2
+E P3
+F P4 
+S P5
