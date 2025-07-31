@@ -38,5 +38,5 @@ python avh.py -input data -out output [-size WIDTH HEIGHT] [-iou IOU_THRESHOLD] 
 ```
 example: 
 ```bash
-python avh.py -input data -out output -size 1920 1080 -iou 0.5 -p
+python avh.py -input data -out output -size 1920 1080 -iou 0.1 -p
 ```
