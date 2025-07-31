@@ -18,6 +18,8 @@ Install the required Python libraries before use:
 pip install -r requirements.txt
 ```
 ## Directory Structure
+
+You may need the extra validation annotation from different human. 
 The input label files should follow yolo format, with:
 **class_id, x_center, y_center, width, height**
 
