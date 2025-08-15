@@ -69,7 +69,7 @@ Using fine-tuned parameters for training your own model:
 ```bash
 cp det/best_hyperparameters.yaml ./
 
-# unzip TomatoMAP dataset here
+# unzip TomatoMAP dataset you downloaded from our e!DAL repo under code/ folder
 ```
 Then follow the guide under TomatoMAP_builder.ipynb to finish the dataset setup. 
 
