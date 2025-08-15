@@ -64,13 +64,14 @@ We use notebook as TomatoMAP builder (script version coming soon).
 ```bash
 jupyter notebook
 ```
-The follow the guide under TomatoMAP_builder.ipynb
-Using fine-tuned parameters:
+
+Using fine-tuned parameters for training your own model:
 ```bash
 cp det/best_hyperparameters.yaml ./
 
 # unzip TomatoMAP dataset here
 ```
+Then follow the guide under TomatoMAP_builder.ipynb to finish the dataset setup. 
 
 ### Project Structure
 
