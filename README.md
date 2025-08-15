@@ -54,41 +54,22 @@ Please check [code](https://github.com/0YJ/TomatoMAP/tree/main/code) subfolder f
 ### Requirements
 We suggest using [conda](https://www.anaconda.com/) for env management. 
 ```
-conda create -n tomatomap python=3.10
-conda activate tomatomap
+git clone https://github.com/0YJ/TomatoMAP.git
+cd TomatoMAP
+conda env create --file environment.yml
+conda activate TomatoMAP
+cd code
 ```
 We use notebook as TomatoMAP builder (script version coming soon).
 ```bash
-pip install notebook
 jupyter notebook
 ```
-Clone repo.
+The follow the guide under TomatoMAP_builder.ipynb
+Using fine-tuned parameters:
 ```bash
-# clone repo
-git clone https://github.com/0YJ/TomatoMAP.git && cd TomatoMAP/code
 cp det/best_hyperparameters.yaml ./
 
 # unzip TomatoMAP dataset here
-
-# install [PyTorch](https://pytorch.org/get-started/locally/)
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-
-pip install numpy pandas matplotlib tqdm pillow scikit-learn
-
-# task-specific requirements
-# for detection:
-pip install ultralytics
-
-# for segmentation:
-python -m pip install 'git+https://github.com/facebookresearch/detectron2.git'
-pip install opencv-python
-
-# for ISAT2COCO conversion:
-pip install pyyaml
-
-# translate ISAT format to COCO
-cd utils
-python isat2coco.py
 ```
 
 ### Project Structure
