@@ -48,7 +48,8 @@ def convert_isat_folder_to_coco(task_dir, label_dir, yaml_path, output_dir, trai
                 "img_file": img_name,
                 "json_file": json_map[base]
             })
-
+            
+    random.seed(888)
     random.shuffle(dataset)
     total = len(dataset)
     train_end = int(total * train_ratio)
