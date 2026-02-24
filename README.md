@@ -12,7 +12,7 @@
   <a href="https://0yj.github.io/tomato_map/"><img src="https://img.shields.io/badge/Homepage-TomatoMAP-red?logo=firefox" alt="Homepage" height="28"></a>
   <a href="https://arxiv.org/abs/2507.11279"><img src="https://img.shields.io/badge/arXiv-2507.11279-b31b1b?logo=arxiv&logoColor=red" alt="arXiv Paper" height="28"></a>
   <a href="https://github.com/0YJ/TomatoMAP"><img src="https://img.shields.io/badge/Code-Github-blue?logo=github" alt="GitHub Code" height="28"></a>
-  <a href="https://doi.ipk-gatersleben.de/DOI/89386758-8bfd-41ca-aa9c-ee363e9d94c9/073051f0-b05e-4b43-a9cd-0435fe7cd913/2/184794008"><img src="https://img.shields.io/badge/Dataset-e!DAL-green?logo=databricks&logoColor=white" alt="Dataset" height="28"></a>
+  <a href="https://doi.org/10.5447/ipk/2025/14"><img src="https://img.shields.io/badge/Dataset-e!DAL-green?logo=databricks&logoColor=white" alt="Dataset" height="28"></a>
   <a href="https://0yj.github.io/tomato_map/"><img src="https://visitor-badge.laobi.icu/badge?page_id=0YJ/TomatoMAP" alt="Visitor" height="28"></a>
 </div><br>
 
@@ -52,9 +52,19 @@ If you need any help, submit a ticket via [GitHub Issues](https://github.com/0YJ
 If you are interested to contribute to our work, please feel free to contact us.
 
 ## ✨ Getting Started
-Training entry is now at repository root (`main.py`), with internal modules in `src/`.
+Our code is tested under the following environment details:
+- OS: Ubuntu 20.04.6 LTS
+- GPU: Tesla V100-PCIE-16GB
+- NVIDIA Driver: 575.57.08
+- CUDA Toolkit: 12.6
+- Python: 3.10.19 (`conda` env)
+- PyTorch: 2.4.0
+- TorchVision: 0.19.0
+
+For Detectron2 compilation with CUDA 12.6, use `gcc/g++ 13` in conda env (newer GCC, e.g. 14, may fail with nvcc host compiler checks).
+
 <details>
-  <summary>Expand details</summary>
+  <summary>❤Expand details❤</summary>
 
 ### Requirements
 We suggest using [conda](https://www.anaconda.com/) for env management. 
@@ -67,29 +77,15 @@ pip install -e submodules/ultralytics/ --no-build-isolation --no-deps
 pip install -e submodules/detectron2/ --no-build-isolation --no-deps
 ```
 
-### Tested Environment
-
-- OS: Ubuntu 20.04.6 LTS
-- GPU: Tesla V100-PCIE-16GB
-- NVIDIA Driver: 575.57.08
-- CUDA Toolkit: 12.6
-- Python: 3.10.19 (`conda` env)
-- PyTorch: 2.4.0
-- TorchVision: 0.19.0
-
-For Detectron2 compilation with CUDA 12.6, use `gcc/g++ 13` in conda env (newer GCC, e.g. 14, may fail with nvcc host compiler checks).
-
-We use notebook as TomatoMAP builder (script version coming soon).
+We use notebook as TomatoMAP builder.
 ```bash
 jupyter notebook
+# Then open the notebook, follow our pipeline (you may need to adjust the path based on your system).
 ```
 
-# unzip TomatoMAP dataset you downloaded from our e!DAL repo under repository root
-```
-Then follow the guide under TomatoMAP_builder.ipynb to finish the dataset setup. 
-
+### unzip TomatoMAP dataset you downloaded from our [e!DAL repo](https://doi.org/10.5447/ipk/2025/14) under repository root
+Then follow the guide under TomatoMAP_builder.ipynb to finish the dataset setup. Finally your project folder should look like this:
 ### Project Structure
-
 ```
 TomatoMAP/
 ├── main.py                        # Main entry
@@ -264,7 +260,7 @@ If you use TomatoMAP in your research and think our project is useful, please ci
       author={Yujie Zhang and Sabine Struckmeyer and Andreas Kolb and Sven Reichardt},
       year={2026},
       journal={Sci Data},
-      url={https://doi.org/10.1038/s41597-026-06926-9}, 
+      doi={10.1038/s41597-026-06926-9}, 
 }
 
 
@@ -272,6 +268,7 @@ If you use TomatoMAP in your research and think our project is useful, please ci
   title={TomatoMAP: Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotyping},
   author={Yujie Zhang and Sabine Struckmeyer and Andreas Kolb and Sven Reichardt},
   journal={e!DAL-Plant Genomics and Phenomics Research Data Repository (PGP)},
-  year={2025}
+  year={2025},
+  doi={10.5447/ipk/2025/14}
 }
 ```
