@@ -80,13 +80,12 @@ pip install -e submodules/detectron2/ --no-build-isolation --no-deps
 For Detectron2 compilation with CUDA 12.6, use `gcc/g++ 13` in conda env (newer GCC, e.g. 14, may fail with nvcc host compiler checks).
 
 We use notebook as TomatoMAP builder (script version coming soon).
+
 ```bash
 jupyter notebook
 ```
 
 # unzip TomatoMAP dataset you downloaded from our e!DAL repo under repository root
-
-```
 Then follow the guide under TomatoMAP_builder.ipynb to finish the dataset setup. 
 
 ### Project Structure
