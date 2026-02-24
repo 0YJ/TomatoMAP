@@ -36,12 +36,12 @@ If you need any help, submit a ticket via [GitHub Issues](https://github.com/0YJ
 ## 📢 Updates
 
 * 2025-07-15 For KIDA Conference, [arXiv v1](https://arxiv.org/abs/2507.11279) was available
-* 2025-07-18 Full dataset released on [e!DAL](https://doi.org/10.5447/ipk/2025/14)
-* 2025-07-24 Submitted to Nature
+* 2025-07-18 e!DAL dataset DOI is claimed
 * 2025-07-23 Code repo was turned to public
-* 2025-02-17 Accepted by Nature
-* 2025-02-24 e!DAL DOI is published
-* 2025-02-24 Code space is optimized
+* 2025-07-24 Submitted to Nature
+* 2026-02-17 Accepted by Nature
+* 2026-02-24 e!DAL dataset DOI is published
+* 2026-02-24 Code space is optimized from private branch
 
 ## 🌠 Coming Soon
 * Update homepage
