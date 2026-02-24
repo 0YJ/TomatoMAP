@@ -82,7 +82,11 @@ jupyter notebook
 # Then open the notebook, follow our pipeline (you may need to adjust the path based on your system).
 ```
 
-### unzip TomatoMAP dataset you downloaded from our [e!DAL repo](https://doi.org/10.5447/ipk/2025/14) under repository root
+### unzip TomatoMAP dataset you downloaded from our [e!DAL repo](https://doi.org/10.5447/ipk/2025/14) under repository root:
+```bash
+unzip TomatoMAP.zip
+mv TomatoMAP_builder.ipynb TomatoMAP
+```
 Then follow the guide under TomatoMAP_builder.ipynb to finish the dataset setup. Finally your project folder should look like this:
 ### Project Structure
 ```
@@ -90,7 +94,6 @@ TomatoMAP/
 ├── main.py                        # Main entry
 ├── README.md                      # Project documentation
 ├── environment.yml                # Environment definition
-├── TomatoMAP_builder.ipynb        # Dataset builder notebook
 ├── configs/
 │   └── det/                       # Detection configs
 │       ├── TomatoMAP-Det.yaml
@@ -108,6 +111,15 @@ TomatoMAP/
 ├── submodules/                    # External dependencies
 │   ├── ultralytics/
 │   └── detectron2/
+├── TomatoMAP/                     # Dataset root directory
+│   ├── TomatoMAP_builder.ipynb    # Dataset builder notebook
+│   ├── metadata                   # meta data for dataset
+│   ├── img                        # raw TomatoMAP data subdivision
+│   ├── labels                     # raw ToamtoMAP data label subdivision
+│   ├── BBCH_classification.xlsx   # ToamtoMAP BBCH classification label
+│   ├── TomatoMAP-Cls/             # Classification subset
+│   ├── TomatoMAP-Det/             # Detection subset
+│   └── TomatoMAP-Seg/             # Segmentation subset
 └── outputs/                       # Training outputs (created automatically)
 ```
 
