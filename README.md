@@ -167,6 +167,12 @@ python main.py det \
     --device 0 \
     --output-dir outputs/det/experiment1 \
     --hyperparams ./det/best_hyperparameters.yaml
+
+  # enable class-balanced weighted sampling
+  python main.py det \
+    --data-config ./det/TomatoMAP-Det.yaml \
+    --model yolo11l.pt \
+    --balanced-sampling
 ```
 
 ### Segmentation Training
