@@ -10,7 +10,7 @@
 
 <div align="center">
   <a href="https://0yj.github.io/tomato_map/"><img src="https://img.shields.io/badge/Homepage-TomatoMAP-red?logo=firefox" alt="Homepage" height="28"></a>
-  <a href="https://arxiv.org/abs/2507.11279"><img src="https://img.shields.io/badge/arXiv-2507.11279-b31b1b?logo=arxiv&logoColor=red" alt="arXiv Paper" height="28"></a>
+  <a href="https://doi.org/10.1038/s41597-026-06926-9"><img src="https://img.shields.io/badge/Paper-Springer%20Nature-6f42c1?logo=readthedocs&logoColor=white" alt="paper" height="28"></a>
   <a href="https://github.com/0YJ/TomatoMAP"><img src="https://img.shields.io/badge/Code-Github-blue?logo=github" alt="GitHub Code" height="28"></a>
   <a href="https://doi.org/10.5447/ipk/2025/14"><img src="https://img.shields.io/badge/Dataset-e!DAL-green?logo=databricks&logoColor=white" alt="Dataset" height="28"></a>
   <a href="https://0yj.github.io/tomato_map/"><img src="https://visitor-badge.laobi.icu/badge?page_id=0YJ/TomatoMAP" alt="Visitor" height="28"></a>
@@ -35,17 +35,17 @@ If you need any help, submit a ticket via [GitHub Issues](https://github.com/0YJ
 
 ## 📢 Updates
 
-* 2025-07-15 For KIDA Conference, [arXiv v1](https://arxiv.org/abs/2507.11279) was available
-* 2025-07-18 Full dataset released on [e!DAL](https://doi.org/10.5447/ipk/2025/14)
-* 2025-07-24 Submitted to Nature
+* 2025-07-15 For KIDA Conference, arXiv was available
+* 2025-07-18 e!DAL dataset DOI is claimed
 * 2025-07-23 Code repo was turned to public
-* 2025-02-17 Accepted by Nature
-* 2025-02-24 e!DAL DOI is published
-* 2025-02-24 Code space is optimized
+* 2025-07-24 Submitted to Nature
+* 2026-02-17 Accepted by Nature
+* 2026-02-24 e!DAL dataset DOI is published
+* 2026-02-24 Code space is optimized from private branch
 
 ## 🌠 Coming Soon
 * Update homepage
-* TomatoMAP+ follow up project
+* TomatoMAP Plus (TomatoMAP+), a fancy follow-up project
 
 ## 🤝Cooperation
 If you are interested to contribute to our work, please feel free to contact us.
@@ -56,7 +56,7 @@ Our code is tested under the following environment details:
 - GPU: Tesla V100-PCIE-16GB
 - NVIDIA Driver: 575.57.08
 - CUDA Toolkit: 12.6
-- Python: 3.10.19 (`conda` env)
+- Python: 3.10.19 (`conda`)
 - PyTorch: 2.4.0
 - TorchVision: 0.19.0
 
@@ -82,7 +82,11 @@ jupyter notebook
 # Then open the notebook, follow our pipeline (you may need to adjust the path based on your system).
 ```
 
-### unzip TomatoMAP dataset you downloaded from our [e!DAL repo](https://doi.org/10.5447/ipk/2025/14) under repository root
+### unzip TomatoMAP dataset you downloaded from our [e!DAL repo](https://doi.org/10.5447/ipk/2025/14) under repository root:
+```bash
+unzip TomatoMAP.zip
+mv TomatoMAP_builder.ipynb TomatoMAP
+```
 Then follow the guide under TomatoMAP_builder.ipynb to finish the dataset setup. Finally your project folder should look like this:
 ### Project Structure
 ```
@@ -90,7 +94,6 @@ TomatoMAP/
 ├── main.py                        # Main entry
 ├── README.md                      # Project documentation
 ├── environment.yml                # Environment definition
-├── TomatoMAP_builder.ipynb        # Dataset builder notebook
 ├── configs/
 │   └── det/                       # Detection configs
 │       ├── TomatoMAP-Det.yaml
@@ -108,6 +111,15 @@ TomatoMAP/
 ├── submodules/                    # External dependencies
 │   ├── ultralytics/
 │   └── detectron2/
+├── TomatoMAP/                     # Dataset root directory
+│   ├── TomatoMAP_builder.ipynb    # Dataset builder notebook
+│   ├── metadata                   # meta data for dataset
+│   ├── img                        # raw TomatoMAP data subdivision
+│   ├── labels                     # raw ToamtoMAP data label subdivision
+│   ├── BBCH_classification.xlsx   # ToamtoMAP BBCH classification label
+│   ├── TomatoMAP-Cls/             # Classification subset
+│   ├── TomatoMAP-Det/             # Detection subset
+│   └── TomatoMAP-Seg/             # Segmentation subset
 └── outputs/                       # Training outputs (created automatically)
 ```
 
