@@ -273,7 +273,7 @@ If you like our project, please leave a star for us, thanks!
    <img 
      alt="Star History Chart" 
      src="https://api.star-history.com/svg?repos=0YJ/TomatoMAP&type=date&legend=top-left"
-     width="600"
+     width="800"
    />
  </picture>
 </a>
