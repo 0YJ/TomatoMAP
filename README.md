@@ -35,7 +35,7 @@ If you need any help, submit a ticket via [GitHub Issues](https://github.com/0YJ
 
 ## 📢 Updates
 
-* 2025-07-15 For KIDA Conference, [arXiv v1](https://arxiv.org/abs/2507.11279) was available
+* 2025-07-15 For KIDA Conference, arXiv was available
 * 2025-07-18 e!DAL dataset DOI is claimed
 * 2025-07-23 Code repo was turned to public
 * 2025-07-24 Submitted to Nature
@@ -56,7 +56,7 @@ Our code is tested under the following environment details:
 - GPU: Tesla V100-PCIE-16GB
 - NVIDIA Driver: 575.57.08
 - CUDA Toolkit: 12.6
-- Python: 3.10.19 (`conda` env)
+- Python: 3.10.19 (`conda`)
 - PyTorch: 2.4.0
 - TorchVision: 0.19.0
 
