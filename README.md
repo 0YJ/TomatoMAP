@@ -52,9 +52,19 @@ If you need any help, submit a ticket via [GitHub Issues](https://github.com/0YJ
 If you are interested to contribute to our work, please feel free to contact us.
 
 ## ✨ Getting Started
-Training entry is now at repository root (`main.py`), with internal modules in `src/`.
+Our code is tested under the following environment details:
+- OS: Ubuntu 20.04.6 LTS
+- GPU: Tesla V100-PCIE-16GB
+- NVIDIA Driver: 575.57.08
+- CUDA Toolkit: 12.6
+- Python: 3.10.19 (`conda` env)
+- PyTorch: 2.4.0
+- TorchVision: 0.19.0
+
+For Detectron2 compilation with CUDA 12.6, use `gcc/g++ 13` in conda env (newer GCC, e.g. 14, may fail with nvcc host compiler checks).
+
 <details>
-  <summary>Expand details</summary>
+  <summary>❤Expand details❤</summary>
 
 ### Requirements
 We suggest using [conda](https://www.anaconda.com/) for env management. 
@@ -66,16 +76,6 @@ conda activate TomatoMAP
 pip install -e submodules/ultralytics/ --no-build-isolation --no-deps
 pip install -e submodules/detectron2/ --no-build-isolation --no-deps
 ```
-### Tested Environment
-- OS: Ubuntu 20.04.6 LTS
-- GPU: Tesla V100-PCIE-16GB
-- NVIDIA Driver: 575.57.08
-- CUDA Toolkit: 12.6
-- Python: 3.10.19 (`conda` env)
-- PyTorch: 2.4.0
-- TorchVision: 0.19.0
-
-For Detectron2 compilation with CUDA 12.6, use `gcc/g++ 13` in conda env (newer GCC, e.g. 14, may fail with nvcc host compiler checks).
 
 We use notebook as TomatoMAP builder.
 ```bash
