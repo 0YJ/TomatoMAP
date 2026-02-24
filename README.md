@@ -35,16 +35,15 @@ If you need any help, submit a ticket via [GitHub Issues](https://github.com/0YJ
 
 ## 📢 Updates
 
-* 15.07.2025: Paper available on [arXiv](https://arxiv.org/abs/2507.11279)
-* 18.07.2025 Full dataset release on [e!DAL](https://doi.ipk-gatersleben.de/DOI/89386758-8bfd-41ca-aa9c-ee363e9d94c9/073051f0-b05e-4b43-a9cd-0435fe7cd913/2/184794008)
-* 2025-07-24 Submit to Nature
-* 2025-07-23 Code repo public
+* 15.07.2025 For KIDA Conference, [arXiv v1](https://arxiv.org/abs/2507.11279) was available
+* 18.07.2025 Full dataset released on [e!DAL](https://doi.ipk-gatersleben.de/DOI/89386758-8bfd-41ca-aa9c-ee363e9d94c9/073051f0-b05e-4b43-a9cd-0435fe7cd913/2/184794008)
+* 2025-07-24 Submitted to Nature
+* 2025-07-23 Code repo was turned to public
 * 2025-02-17 Accepted by Nature
+* 2025-02-24 e!DAL DOI is published
+* 2025-02-24 Code space is optimized
 
 ## 🌠 Coming Soon
-* Claim e!DAL DOI
-* TomatoMAP builder on Colab
-* User friendly Web UI demo
 * Update homepage
 * TomatoMAP+ follow up project
 
