@@ -1,4 +1,4 @@
-cd ..name: TomatoMAP
+name: TomatoMAP
 channels:
   - pytorch
   - conda-forge
