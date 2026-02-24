@@ -263,13 +263,21 @@ W-de.NBI-013, W-de.NBI-014, W-de.NBI-016, W-de.NBI-022), [Ultralytics YOLO](http
 
 ## 🌟 Star History
 If you like our project, please leave a star for us, thanks!
+<p align="center">
 <a href="https://www.star-history.com/#0YJ/TomatoMAP&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=0YJ/TomatoMAP&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=0YJ/TomatoMAP&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=0YJ/TomatoMAP&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" 
+           srcset="https://api.star-history.com/svg?repos=0YJ/TomatoMAP&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" 
+           srcset="https://api.star-history.com/svg?repos=0YJ/TomatoMAP&type=date&legend=top-left" />
+   <img 
+     alt="Star History Chart" 
+     src="https://api.star-history.com/svg?repos=0YJ/TomatoMAP&type=date&legend=top-left"
+     width="450"
+   />
  </picture>
 </a>
+</p>
 
 ## 🖊 Citation
 
