@@ -72,7 +72,7 @@ pip install -e submodules/detectron2/ --no-build-isolation --no-deps
 - OS: Ubuntu 20.04.6 LTS
 - GPU: Tesla V100-PCIE-16GB
 - NVIDIA Driver: 575.57.08
-- CUDA Toolkit (`nvcc`): 12.6
+- CUDA Toolkit: 12.6
 - Python: 3.10.19 (`conda` env)
 - PyTorch: 2.4.0
 - TorchVision: 0.19.0
@@ -84,18 +84,9 @@ We use notebook as TomatoMAP builder (script version coming soon).
 jupyter notebook
 ```
 
-Using fine-tuned parameters for training your own model:
-```bash
-cp configs/det/best_hyperparameters.yaml ./
-
 # unzip TomatoMAP dataset you downloaded from our e!DAL repo under repository root
 ```
 Then follow the guide under TomatoMAP_builder.ipynb to finish the dataset setup. 
-
-Initialize git submodules (required):
-```bash
-git submodule update --init --recursive
-```
 
 ### Project Structure
 
@@ -109,7 +100,7 @@ TomatoMAP/
 │   └── det/                       # Detection configs
 │       ├── TomatoMAP-Det.yaml
 │       └── best_hyperparameters.yaml
-├── src/                           # Core source modules
+├── src/                           # Core source functions
 │   ├── cls_trainer.py
 │   ├── det_trainer.py
 │   ├── det_balanced_trainer.py
