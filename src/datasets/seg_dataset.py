@@ -4,22 +4,25 @@ Dataset utilities for TomatoMAP-Seg
 """
 
 import json
+import math
 import numpy as np
-from detectron2.data import build_detection_train_loader
+from detectron2.data import DatasetCatalog
 
 from utils.common import print_section
 
 
 def get_dataset_info(cfg, ann_dir=None):
     try:
-        train_loader = build_detection_train_loader(cfg)
-        train_size = len(train_loader)
+        train_dataset_name = cfg.DATASETS.TRAIN[0]
+        train_dataset = DatasetCatalog.get(train_dataset_name)
+        train_size = len(train_dataset)
+        iterations_per_epoch = math.ceil(train_size / cfg.SOLVER.IMS_PER_BATCH)
         
         print(f"Training dataset size: {train_size} images")
         print(f"Images per batch: {cfg.SOLVER.IMS_PER_BATCH}")
-        print(f"Iterations per epoch: {train_size // cfg.SOLVER.IMS_PER_BATCH}")
+        print(f"Iterations per epoch: {iterations_per_epoch}")
         print(f"Max iterations: {cfg.SOLVER.MAX_ITER}")
-        print(f"Estimated epochs: {cfg.SOLVER.MAX_ITER // (train_size // cfg.SOLVER.IMS_PER_BATCH)}")
+        print(f"Estimated epochs: {cfg.SOLVER.MAX_ITER // iterations_per_epoch}")
         
         return train_size
     except Exception as e:

@@ -27,6 +27,7 @@ from datasets.seg_dataset import analyze_dataset_areas, get_dataset_info
 class SegmentationTrainer:
     
     def __init__(self, args):
+        self._ensure_default_args(args)
         self.args = args
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         
@@ -43,6 +44,24 @@ class SegmentationTrainer:
         
         # register datasets
         self._register_datasets()
+
+    @staticmethod
+    def _ensure_default_args(args):
+        default_args = {
+            'output_dir': 'outputs/seg',
+            'model': 'COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_1x.yaml',
+            'num_classes': 10,
+            'batch_size': 4,
+            'lr': 0.0001,
+            'epochs': 100,
+            'patience': 5,
+            'model_path': 'model_best.pth',
+            'n': 3,
+        }
+
+        for key, value in default_args.items():
+            if not hasattr(args, key):
+                setattr(args, key, value)
         
     def _register_datasets(self):
         print_section("Registering datasets")

@@ -54,6 +54,9 @@ cover/
 runs/
 outputs/
 yolov11l.pt
+yolo11l.pt
+yolo26n.pt
+*.pt
 # Translations
 *.mo
 *.pot
