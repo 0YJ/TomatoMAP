@@ -81,10 +81,10 @@ Then follow the guide under TomatoMAP_builder.ipynb to finish the dataset setup.
 ### Project Structure
 
 ```
-TomatoMAP/
+code/
 ├── main.py                # Main entry
-├── README.md              # Introduction
-├── requirements.txt       # Dependencies
+│             
+├── README.md              # Code workspace guide
 │
 ├── avh/                   # AI vs Human Analysis
 │
@@ -268,7 +268,7 @@ If you use TomatoMAP in your research and think our project is useful, please ci
       author={Yujie Zhang and Sabine Struckmeyer and Andreas Kolb and Sven Reichardt},
       year={2026},
       journal={Sci Data},
-      url={https://https://doi.org/10.1038/s41597-026-06926-9}, 
+      url={https://doi.org/10.1038/s41597-026-06926-9}, 
 }
 
 
