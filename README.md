@@ -45,7 +45,7 @@ If you need any help, submit a ticket via [GitHub Issues](https://github.com/0YJ
 
 ## 🌠 Coming Soon
 * Update homepage
-* TomatoMAP+ follow up project
+* TomatoMAP Plus (TomatoMAP+), a fancy follow-up project
 
 ## 🤝Cooperation
 If you are interested to contribute to our work, please feel free to contact us.
