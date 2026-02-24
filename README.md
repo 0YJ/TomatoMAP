@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/logo.png" alt="logo" width="64" align="left" style="margin-right: 10px;margin-top: 60px;">
+  <img src="assets/ruby.png" alt="logo" width="64" align="left" style="margin-right: 10px;margin-top: 60px;">
   <h1>TomatoMAP: Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotyping</h1>
 </div>
 
