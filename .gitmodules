@@ -1,0 +1,6 @@
+[submodule "submodules/ultralytics"]
+	path = submodules/ultralytics
+	url = https://github.com/ultralytics/ultralytics.git
+[submodule "submodules/detectron2"]
+	path = submodules/detectron2
+	url = https://github.com/facebookresearch/detectron2.git

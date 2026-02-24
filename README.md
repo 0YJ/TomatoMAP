@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="imgs/logo.png" alt="logo" width="64" align="left" style="margin-right: 10px;margin-top: 60px;">
+  <img src="assets/logo.png" alt="logo" width="64" align="left" style="margin-right: 10px;margin-top: 60px;">
   <h1>TomatoMAP: Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotyping</h1>
 </div>
 
@@ -52,72 +52,68 @@ If you need any help, submit a ticket via [GitHub Issues](https://github.com/0YJ
 If you are interested to contribute to our work, please feel free to contact us.
 
 ## ✨ Getting Started
-Please check [code](https://github.com/0YJ/TomatoMAP/tree/main/code) subfolder for more details. Or click: 
+Training entry is now at repository root (`main.py`), with internal modules in `src/`.
 <details>
   <summary>Expand details</summary>
 
 ### Requirements
 We suggest using [conda](https://www.anaconda.com/) for env management. 
 ```
-git clone https://github.com/0YJ/TomatoMAP.git
+git clone https://github.com/0YJ/TomatoMAP.git --recursive
 cd TomatoMAP
 conda env create --file environment.yml
 conda activate TomatoMAP
-cd code
+pip install -e submodules/ultralytics/ --no-build-isolation --no-deps
+pip install -e submodules/detectron2/ --no-build-isolation --no-deps
 ```
+
+### Tested Environment
+
+- OS: Ubuntu 20.04.6 LTS
+- GPU: Tesla V100-PCIE-16GB
+- NVIDIA Driver: 575.57.08
+- CUDA Toolkit: 12.6
+- Python: 3.10.19 (`conda` env)
+- PyTorch: 2.4.0
+- TorchVision: 0.19.0
+
+For Detectron2 compilation with CUDA 12.6, use `gcc/g++ 13` in conda env (newer GCC, e.g. 14, may fail with nvcc host compiler checks).
+
 We use notebook as TomatoMAP builder (script version coming soon).
 ```bash
 jupyter notebook
 ```
 
-Using fine-tuned parameters for training your own model:
-```bash
-cp det/best_hyperparameters.yaml ./
-
-# unzip TomatoMAP dataset you downloaded from our e!DAL repo under code/ folder
+# unzip TomatoMAP dataset you downloaded from our e!DAL repo under repository root
 ```
 Then follow the guide under TomatoMAP_builder.ipynb to finish the dataset setup. 
 
 ### Project Structure
 
 ```
-code/
-├── main.py                # Main entry
-│             
-├── README.md              # Code workspace guide
-│
-├── avh/                   # AI vs Human Analysis
-│
-├── seg/                   # Segmentation package
-│
-├── cls/                   # Classifier
-│
-├── det/                   # Detection package
-│   ├── TomatoMAP-Det.yaml     # YOLo training settings
-│   └── best_hyperparameters.yaml     # Fine-tuned hyperparameters
-│
-├── trainers/              # Training modules
-│   ├── cls_trainer.py     # Classification trainer
-│   ├── det_trainer.py     # Detection trainer
-│   └── seg_trainer.py     # Segmentation trainer
-│
-├── datasets/              # Dataset handling
-│   ├── cls_dataset.py     # Classification dataset
-│   └── seg_dataset.py     # Segmentation dataset utilities
-│
-├── models/                # Model definitions
-│   ├── cls_models.py      # Classification models
-│   └── seg_hooks.py       # Segmentation training hooks
-│
-├── utils/                 # Utility functions
-│   ├── common.py          # Common utilities
-│   ├── visualization.py   # Visualization tools
-│   └── isat2coco.py       # Format converter for Seg
-│
-└── outputs/              # Training outputs (created automatically)
-    ├── cls/              # Classification results
-    ├── det/              # Detection results
-    └── seg/              # Segmentation results
+TomatoMAP/
+├── main.py                        # Main entry
+├── README.md                      # Project documentation
+├── environment.yml                # Environment definition
+├── TomatoMAP_builder.ipynb        # Dataset builder notebook
+├── configs/
+│   └── det/                       # Detection configs
+│       ├── TomatoMAP-Det.yaml
+│       └── best_hyperparameters.yaml
+├── src/                           # Core source functions
+│   ├── cls_trainer.py
+│   ├── det_trainer.py
+│   ├── det_balanced_trainer.py
+│   ├── seg_trainer.py
+│   ├── datasets/
+│   ├── models/
+│   ├── utils/
+│   ├── cls/
+│   └── avh/
+├── submodules/                    # External dependencies
+│   ├── ultralytics/
+│   └── detectron2/
+└── outputs/                       # Training outputs (created automatically)
 ```
 
 ## Usage
@@ -154,11 +150,11 @@ Train a YOLO model on TomatoMAP-Det dataset:
 
 ```bash
 # default training with YOLO11-Large
-python main.py det --data-config ./det/TomatoMAP-Det.yaml --epochs 500
+python main.py det --data-config ./configs/det/TomatoMAP-Det.yaml --epochs 500
 
 # options
 python main.py det \
-    --data-config ./det/TomatoMAP-Det.yaml \
+    --data-config ./configs/det/TomatoMAP-Det.yaml \
     --model yolo11l.pt \
     --epochs 500 \
     --img-size 640 \
@@ -166,11 +162,11 @@ python main.py det \
     --patience 10 \
     --device 0 \
     --output-dir outputs/det/experiment1 \
-    --hyperparams ./det/best_hyperparameters.yaml
+    --hyperparams ./configs/det/best_hyperparameters.yaml
 
-  # enable class-balanced weighted sampling
-  python main.py det \
-    --data-config ./det/TomatoMAP-Det.yaml \
+# enable class-balanced weighted sampling
+python main.py det \
+    --data-config ./configs/det/TomatoMAP-Det.yaml \
     --model yolo11l.pt \
     --balanced-sampling
 ```
