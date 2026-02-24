@@ -67,6 +67,18 @@ pip install -e submodules/ultralytics/ --no-build-isolation --no-deps
 pip install -e submodules/detectron2/ --no-build-isolation --no-deps
 ```
 
+### Tested Environment
+
+- OS: Ubuntu 20.04.6 LTS
+- GPU: Tesla V100-PCIE-16GB
+- NVIDIA Driver: 575.57.08
+- CUDA Toolkit (`nvcc`): 12.6
+- Python: 3.10.19 (`conda` env)
+- PyTorch: 2.4.0
+- TorchVision: 0.19.0
+
+For Detectron2 compilation with CUDA 12.6, use `gcc/g++ 13` in conda env (newer GCC, e.g. 14, may fail with nvcc host compiler checks).
+
 We use notebook as TomatoMAP builder (script version coming soon).
 ```bash
 jupyter notebook
