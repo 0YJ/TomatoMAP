@@ -85,6 +85,7 @@ jupyter notebook
 ```
 
 # unzip TomatoMAP dataset you downloaded from our e!DAL repo under repository root
+
 ```
 Then follow the guide under TomatoMAP_builder.ipynb to finish the dataset setup. 
 
