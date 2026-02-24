@@ -10,7 +10,7 @@
 
 <div align="center">
   <a href="https://0yj.github.io/tomato_map/"><img src="https://img.shields.io/badge/Homepage-TomatoMAP-red?logo=firefox" alt="Homepage" height="28"></a>
-  <a href="https://arxiv.org/abs/2507.11279"><img src="https://img.shields.io/badge/arXiv-2507.11279-b31b1b?logo=arxiv&logoColor=red" alt="arXiv Paper" height="28"></a>
+  <a href="https://doi.org/10.1038/s41597-026-06926-9"><img src="https://img.shields.io/badge/Springer%20Nature-OK-6f42c1" alt="Sci Data" height="28"></a>
   <a href="https://github.com/0YJ/TomatoMAP"><img src="https://img.shields.io/badge/Code-Github-blue?logo=github" alt="GitHub Code" height="28"></a>
   <a href="https://doi.org/10.5447/ipk/2025/14"><img src="https://img.shields.io/badge/Dataset-e!DAL-green?logo=databricks&logoColor=white" alt="Dataset" height="28"></a>
   <a href="https://0yj.github.io/tomato_map/"><img src="https://visitor-badge.laobi.icu/badge?page_id=0YJ/TomatoMAP" alt="Visitor" height="28"></a>
