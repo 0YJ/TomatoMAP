@@ -275,10 +275,10 @@ If you use TomatoMAP in your research and think our project is useful, please ci
 }
 
 @dataset{tomatomap,
-  title={TomatoMAP: Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotyping},
-  author={Yujie Zhang and Sabine Struckmeyer and Andreas Kolb and Sven Reichardt},
-  journal={e!DAL-Plant Genomics and Phenomics Research Data Repository (PGP)},
-  year={2025},
-  doi={10.5447/ipk/2025/14}
+      title={TomatoMAP: Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotyping},
+      author={Yujie Zhang and Sabine Struckmeyer and Andreas Kolb and Sven Reichardt},
+      journal={e!DAL-Plant Genomics and Phenomics Research Data Repository (PGP)},
+      year={2025},
+      doi={10.5447/ipk/2025/14}
 }
 ```
