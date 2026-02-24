@@ -14,6 +14,7 @@ sys.path.append(str(Path(__file__).parent))
 from utils.common import print_header, check_environment
 from trainers.cls_trainer import ClassificationTrainer
 from trainers.det_trainer import DetectionTrainer
+from trainers.det_balanced_trainer import BalancedDetectionTrainer
 from trainers.seg_trainer import SegmentationTrainer
 
 
@@ -84,6 +85,8 @@ Examples:
                            help='Output directory (default: outputs/det)')
     det_parser.add_argument('--hyperparams', type=str, default=None,
                            help='Path to hyperparameters config file')
+    det_parser.add_argument('--balanced-sampling', action='store_true',
+                           help='Enable class-balanced weighted sampling for detection training')
     
     # segmentation parser
     seg_parser = subparsers.add_parser('seg', help='Train/evaluate segmentation model')
@@ -152,7 +155,7 @@ Examples:
         
     elif args.task == 'det':
         print_header("Detection Training")
-        trainer = DetectionTrainer(args)
+        trainer = BalancedDetectionTrainer(args) if args.balanced_sampling else DetectionTrainer(args)
         trainer.train()
         
     elif args.task == 'seg':
