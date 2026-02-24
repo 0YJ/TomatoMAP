@@ -28,6 +28,10 @@ dependencies:
   - tensorboard
   - cython
   - ninja
+  - gcc_linux-64=13
+  - gxx_linux-64=13
+  - c-compiler
+  - cxx-compiler
   - psutil>=5.8
   - polars>=0.20,<1.0
   - termcolor>=1.1
