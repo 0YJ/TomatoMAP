@@ -18,8 +18,16 @@ class DetectionTrainer:
         
         # disable deterministic algorithms for YOLO
         torch.use_deterministic_algorithms(False)
+
+    def _resolve_device(self):
+        if not torch.cuda.is_available() and self.args.device.lower() != 'cpu':
+            print("CUDA not available, fallback to CPU")
+            return 'cpu'
+        return self.args.device
         
     def train(self):
+        resolved_device = self._resolve_device()
+
         # check environment
         print_section("YOLO Environment Check")
         checks()
@@ -31,7 +39,7 @@ class DetectionTrainer:
             'Epochs': self.args.epochs,
             'Image size': self.args.img_size,
             'Batch size': self.args.batch_size,
-            'Device': self.args.device,
+            'Device': resolved_device,
             'Patience': self.args.patience,
             'Output directory': self.args.output_dir,
             'Hyperparameters': self.args.hyperparams or 'Default'
@@ -59,15 +67,15 @@ class DetectionTrainer:
         }
         
         # add device configuration
-        if self.args.device.lower() == 'cpu':
+        if resolved_device.lower() == 'cpu':
             train_args['device'] = 'cpu'
         else:
             # handle multiple GPUs
-            if ',' in self.args.device:
-                devices = [int(d) for d in self.args.device.split(',')]
+            if ',' in resolved_device:
+                devices = [int(d) for d in resolved_device.split(',')]
                 train_args['device'] = devices
             else:
-                train_args['device'] = int(self.args.device)
+                train_args['device'] = int(resolved_device)
         
         # add hyperparameters (we offer fine-tuned hyperparameters)
         if self.args.hyperparams:

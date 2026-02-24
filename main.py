@@ -4,6 +4,8 @@ TomatoMAP Training Main Entry Point
 """
 
 import argparse
+import ctypes
+import os
 import sys
 from pathlib import Path
 
@@ -13,14 +15,40 @@ sys.path.append(str(PROJECT_ROOT / "src"))
 sys.path.insert(0, str(PROJECT_ROOT / "submodules" / "ultralytics"))
 sys.path.insert(0, str(PROJECT_ROOT / "submodules" / "detectron2"))
 
-from utils.common import print_header, check_environment
-from cls_trainer import ClassificationTrainer
-from det_trainer import DetectionTrainer
-from det_balanced_trainer import BalancedDetectionTrainer
-from seg_trainer import SegmentationTrainer
+def _prefer_conda_runtime_libs():
+    # ensure conda runtime libs (e.g., libstdc++) are prioritized for extensions like cv2
+    conda_prefix = os.environ.get("CONDA_PREFIX")
+    if not conda_prefix:
+        return
+
+    conda_lib = str(Path(conda_prefix) / "lib")
+    current = os.environ.get("LD_LIBRARY_PATH", "")
+    paths = [p for p in current.split(":") if p]
+
+    if conda_lib not in paths:
+        os.environ["LD_LIBRARY_PATH"] = f"{conda_lib}:{current}" if current else conda_lib
+
+
+def _preload_conda_libstdcpp():
+    # preload conda libstdc++ to avoid GLIBCXX mismatch for binary extensions (e.g., cv2)
+    conda_prefix = os.environ.get("CONDA_PREFIX")
+    if not conda_prefix:
+        return
+
+    libstdcpp = Path(conda_prefix) / "lib" / "libstdc++.so.6"
+    if libstdcpp.exists():
+        try:
+            ctypes.CDLL(str(libstdcpp), mode=ctypes.RTLD_GLOBAL)
+        except OSError:
+            pass
 
 
 def main():
+    _prefer_conda_runtime_libs()
+    _preload_conda_libstdcpp()
+
+    from utils.common import print_header, check_environment
+
     parser = argparse.ArgumentParser(
         description='TomatoMAP Training System - Train classification, detection, and segmentation models',
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -151,16 +179,20 @@ Examples:
     
     # run base on task
     if args.task == 'cls':
+        from cls_trainer import ClassificationTrainer
         print_header("Classification Training")
         trainer = ClassificationTrainer(args)
         trainer.train()
         
     elif args.task == 'det':
+        from det_trainer import DetectionTrainer
+        from det_balanced_trainer import BalancedDetectionTrainer
         print_header("Detection Training")
         trainer = BalancedDetectionTrainer(args) if args.balanced_sampling else DetectionTrainer(args)
         trainer.train()
         
     elif args.task == 'seg':
+        from seg_trainer import SegmentationTrainer
         print_header("Segmentation")
         trainer = SegmentationTrainer(args)
         

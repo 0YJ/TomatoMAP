@@ -63,9 +63,10 @@ git clone https://github.com/0YJ/TomatoMAP.git --recursive
 cd TomatoMAP
 conda env create --file environment.yml
 conda activate TomatoMAP
-pip install submodules/detectron2/ --no-build-isolation
-pip install submodules/ultralytics/ --no-build-isolation
+pip install -e submodules/ultralytics/ --no-build-isolation --no-deps
+pip install -e submodules/detectron2/ --no-build-isolation --no-deps
 ```
+
 We use notebook as TomatoMAP builder (script version coming soon).
 ```bash
 jupyter notebook

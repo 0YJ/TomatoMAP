@@ -144,7 +144,15 @@ class BalancedDetectionTrainer:
             return [int(item.strip()) for item in device.split(",") if item.strip()]
         return int(device)
 
+    def _resolve_device(self):
+        if not torch.cuda.is_available() and self.args.device.lower() != "cpu":
+            print("CUDA not available, fallback to CPU")
+            return "cpu"
+        return self.args.device
+
     def train(self):
+        resolved_device = self._resolve_device()
+
         print_section("YOLO Environment Check")
         checks()
 
@@ -154,7 +162,7 @@ class BalancedDetectionTrainer:
             "Epochs": self.args.epochs,
             "Image size": self.args.img_size,
             "Batch size": self.args.batch_size,
-            "Device": self.args.device,
+            "Device": resolved_device,
             "Patience": self.args.patience,
             "Output directory": self.args.output_dir,
             "Hyperparameters": self.args.hyperparams or "Default",
@@ -183,7 +191,7 @@ class BalancedDetectionTrainer:
             "plots": True,
             "save": True,
             "save_period": -1,
-            "device": self._parse_device(self.args.device),
+            "device": self._parse_device(resolved_device),
             "trainer": trainer_cls,
         }
 
