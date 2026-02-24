@@ -29,8 +29,8 @@ dependencies:
   - cython
   - ninja
   - pip:
-      - -e ./submodules/ultralytics
-      - -e ./submodules/detectron2
+      #- -e ./submodules/ultralytics
+      #- -e ./submodules/detectron2
       - fvcore
       - iopath
       - pycocotools

@@ -59,10 +59,12 @@ Training entry is now at repository root (`main.py`), with internal modules in `
 ### Requirements
 We suggest using [conda](https://www.anaconda.com/) for env management. 
 ```
-git clone https://github.com/0YJ/TomatoMAP.git
+git clone https://github.com/0YJ/TomatoMAP.git --recursive
 cd TomatoMAP
 conda env create --file environment.yml
 conda activate TomatoMAP
+pip install submodules/detectron2/ --no-build-isolation
+pip install submodules/ultralytics/ --no-build-isolation
 ```
 We use notebook as TomatoMAP builder (script version coming soon).
 ```bash
