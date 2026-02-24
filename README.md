@@ -37,14 +37,19 @@ If you need any help, submit a ticket via [GitHub Issues](https://github.com/0YJ
 
 * 15.07.2025: Paper available on [arXiv](https://arxiv.org/abs/2507.11279)
 * 18.07.2025 Full dataset release on [e!DAL](https://doi.ipk-gatersleben.de/DOI/89386758-8bfd-41ca-aa9c-ee363e9d94c9/073051f0-b05e-4b43-a9cd-0435fe7cd913/2/184794008)
-* 18.07.2025 Submit to Nature
-* 23.07.2025 Code repo public
+* 2025-07-24 Submit to Nature
+* 2025-07-23 Code repo public
+* 2025-02-17 Accepted by Nature
 
 ## 🌠 Coming Soon
 * Claim e!DAL DOI
 * TomatoMAP builder on Colab
 * User friendly Web UI demo
 * Update homepage
+* TomatoMAP+ follow up project
+
+## 🤝Cooperation
+If you are interested to contribute to our work, please feel free to contact us.
 
 ## ✨ Getting Started
 Please check [code](https://github.com/0YJ/TomatoMAP/tree/main/code) subfolder for more details. Or click: 
@@ -255,11 +260,9 @@ If you use TomatoMAP in your research and think our project is useful, please ci
 @misc{zhang2025tomatomultianglemultiposedataset,
       title={Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotyping}, 
       author={Yujie Zhang and Sabine Struckmeyer and Andreas Kolb and Sven Reichardt},
-      year={2025},
-      eprint={2507.11279},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2507.11279}, 
+      year={2026},
+      journal={Sci Data},
+      url={https://https://doi.org/10.1038/s41597-026-06926-9}, 
 }
 
 
