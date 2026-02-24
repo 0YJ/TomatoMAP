@@ -262,7 +262,7 @@ W-de.NBI-013, W-de.NBI-014, W-de.NBI-016, W-de.NBI-022), [Ultralytics YOLO](http
 [<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg" width="150" alt="JetBrains logo." />](https://www.jetbrains.com)
 
 ## 🌟 Star History
-If you like our project, please leave a star for us, thanks!
+Like our project? Hit that `star` button and be our hero! We’ll serve you more open sauce! 🍲
 <p align="center">
 <a href="https://www.star-history.com/#0YJ/TomatoMAP&type=date&legend=top-left">
  <picture>
