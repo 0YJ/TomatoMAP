@@ -260,7 +260,7 @@ This project is powered by the [de.NBI Cloud](https://www.denbi.de/) within the 
 and ELIXIR-DE (Research Center Jülich and W-de.NBI-001, W-de.NBI-004, W-de.NBI-008, W-de.NBI-010,
 W-de.NBI-013, W-de.NBI-014, W-de.NBI-016, W-de.NBI-022), [Ultralytics YOLO](https://www.ultralytics.com/), [Meta Detectron2](https://ai.meta.com/tools/detectron2/), [ISAT](https://github.com/yatengLG/ISAT_with_segment_anything), and [LabelStudio](https://labelstud.io/). Thanks to [JetBrains](https://www.jetbrains.com) for supporting us with licenses for their tools.
 
-[<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg" width="150" alt="JetBrains logo." />](https://www.jetbrains.com)
+[<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jetbrains.svg" width="150" alt="JetBrains logo." />](https://www.jetbrains.com) &nbsp;&nbsp;&nbsp;&nbsp;
 [<img src="https://mdoa-tools.bi.denbi.de/mpacloud/assets/Denbi.svg" width="150" alt="denbi logo." />](https://www.denbi.de/)
 ## 🌟 Star History
 Like our project? Hit that `star` button at the top right and be our hero! We’ll serve you more open sauce! 🍲
