@@ -286,12 +286,18 @@ Like our project? Hit that `star` button at the top right and be our hero! We’
 If you use TomatoMAP in your research and think our project is useful, please cite:
 
 ```bibtex
-@misc{zhang2025tomatomap,
-      title={Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotyping}, 
-      author={Yujie Zhang and Sabine Struckmeyer and Andreas Kolb and Sven Reichardt},
-      year={2026},
-      journal={Sci Data},
-      doi={10.1038/s41597-026-06926-9}, 
+@article{Zhang2026,
+   author = {Yujie Zhang and Sabine Struckmeyer and Andreas Kolb and Sven Reichardt},
+   doi = {10.1038/s41597-026-06926-9},
+   issn = {2052-4463},
+   issue = {1},
+   journal = {Scientific Data},
+   month = {2},
+   pages = {309},
+   title = {Tomato Multi-Angle Multi-Pose Dataset for Fine-Grained Phenotyping},
+   volume = {13},
+   doi = {https://doi.org/10.1038/s41597-026-06926-9},
+   year = {2026}
 }
 
 @dataset{tomatomap,
@@ -299,6 +305,6 @@ If you use TomatoMAP in your research and think our project is useful, please ci
       author={Yujie Zhang and Sabine Struckmeyer and Andreas Kolb and Sven Reichardt},
       journal={e!DAL-Plant Genomics and Phenomics Research Data Repository (PGP)},
       year={2025},
-      doi={10.5447/ipk/2025/14}
+      doi={https://doi.org/10.5447/ipk/2025/14}
 }
 ```
