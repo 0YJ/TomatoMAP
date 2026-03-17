@@ -42,14 +42,19 @@ If you need any help, submit a ticket via [GitHub Issues](https://github.com/0YJ
 * 2026-02-17 Accepted by Nature
 * 2026-02-24 e!DAL dataset DOI is published
 * 2026-02-24 Code space is optimized from private branch
+* 2026-03-17 IoT sketch preview upload
 
 ## 🌠 Coming Soon
-* Update homepage
-* Code for our IoT Datastation
 * TomatoMAP Plus (TomatoMAP+), a fancy follow-up project
 
 ## 🤝Cooperation
 If you are interested to contribute to our work, please feel free to contact us.
+
+## 💻IoT Datastation 
+As some of you requested, here is our IoT data station design:
+<p align="center">
+  <img src="assets/iot.png" width="500" />
+</p>
 
 ## ✨ Getting Started
 Our code is tested under the following environment details:
