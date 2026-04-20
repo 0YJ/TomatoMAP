@@ -27,6 +27,7 @@
 TomatoMAP includes three subsets, TomatoMAP-Cls, TomatoMAP-Det and TomatoMAP-Seg for 50 BBCH classification, 7 main area detection, and 10 classes instance segmentation for fine-grained phenotyping. The dataset has also unique 3D modeling potential for further research.
 
 If you need any help, submit a ticket via [GitHub Issues](https://github.com/0YJ/TomatoMAP/issues). 
+Note: Due to high SSIM, the newest version of TomatoMAP-Seg removed 4 images. To decalre, TomatoMAP-Seg contains 727 labels with 3,616 images initially. New labeling of TomatoMAP-Seg may carry on wiht our working capacity. 
 
 ## 📜 License
 
