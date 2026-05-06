@@ -16,13 +16,6 @@
   <a href="https://0yj.github.io/tomato_map/"><img src="https://visitor-badge.laobi.icu/badge?page_id=0YJ/TomatoMAP" alt="Visitor" height="28"></a>
 </div><br>
 
-<div align="center">
-<a href="https://orcid.org/0009-0004-8160-809X">Yujie Zhang</a>,
-<a href="">Sabine Struckmeyer</a>,
-<a href="https://orcid.org/0000-0003-4753-7801">Andreas Kolb</a>,
-<a href="https://orcid.org/0000-0001-9779-9610">Sven Reichardt</a>
-</div><br>
-
 [TomatoMAP](https://0yj.github.io/tomato_map) is a novel dataset generated from our multi camera array based on **findability**, **accessibility**, **interoperability**, and **reusability** (FAIR). The data generation and annotation take two years with multiple domain experts. 
 TomatoMAP includes three subsets, TomatoMAP-Cls, TomatoMAP-Det and TomatoMAP-Seg for 50 BBCH classification, 7 main area detection, and 10 classes instance segmentation for fine-grained phenotyping. The dataset has also unique 3D modeling potential for further research.
 
