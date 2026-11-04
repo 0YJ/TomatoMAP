@@ -25,7 +25,7 @@ Note: Due to high SSIM, the newest version of TomatoMAP-Seg removed 4 images. To
 
 ## 📜 License
 
-- TomatoMAP dataset is released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Commercial use requires permission.
+- TomatoMAP dataset is released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). 
 - TomatoMAP code space is released under [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
 ## 📢 Updates
